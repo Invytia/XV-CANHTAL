@@ -7,16 +7,16 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            /* Paleta Intensificada */
+            /* Paleta Intensificada y Elegante */
             --bg-satin-1: #fdf0f4;
             --bg-satin-2: #f2cdd7;
-            --wine-dark: #6e2c3e; /* Nuevo color principal para textos: elegante, legible y colorido */
+            --wine-dark: #6e2c3e; 
             --mauve-medium: #b56c80;
             --white: #ffffff;
             --gold: #d4af37;
@@ -42,13 +42,20 @@
             line-height: 1.6;
         }
 
-        /* ================= DESTELLOS ANIMADOS (Solo Dorado Aquí) ================= */
+        /* ================= DESTELLOS ================= */
         .sparkle {
-            position: absolute; width: 4px; height: 4px; background: #fff; border-radius: 50%;
+            position: absolute; width: 3px; height: 3px; background: #fff; border-radius: 50%;
             box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.9), 0 0 15px 5px rgba(212, 175, 55, 0.6);
             pointer-events: none; opacity: 0; animation: glimmer 4s infinite linear; z-index: 0;
         }
         @keyframes glimmer { 0% { opacity: 0; transform: scale(0) rotate(0deg); } 50% { opacity: 1; transform: scale(1.5) rotate(180deg); } 100% { opacity: 0; transform: scale(0) rotate(360deg); } }
+
+        .shimmer-text {
+            background: linear-gradient(90deg, var(--wine-dark) 0%, var(--gold) 50%, var(--wine-dark) 100%);
+            background-size: 200% auto; color: transparent; -webkit-background-clip: text;
+            background-clip: text; animation: shimmer 4s infinite linear;
+        }
+        @keyframes shimmer { to { background-position: 200% center; } }
 
         /* ================= PANTALLA DEL SOBRE ================= */
         #envelope-screen {
@@ -89,17 +96,22 @@
         .container {
             max-width: 480px; margin: 0 auto; position: relative;
             background: rgba(255,255,255,0.4); backdrop-filter: blur(15px);
-            box-shadow: 0 0 50px rgba(110, 44, 62, 0.2); min-height: 100vh;
+            box-shadow: 0 0 50px rgba(110, 44, 62, 0.15); min-height: 100vh;
             overflow: hidden; display: flex; flex-direction: column;
         }
         .content-layer { position: relative; z-index: 2; width: 100%; }
 
+        /* Divisor Editorial Fino con Diamante */
         .elegant-divider {
-            width: 40%; height: 1.5px; background: var(--gold-gradient);
-            margin: 40px auto; opacity: 0.8; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 50px auto; width: 70%; opacity: 0.7;
         }
+        .elegant-divider::before, .elegant-divider::after {
+            content: ''; height: 1px; flex-grow: 1; background: var(--gold-gradient);
+        }
+        .elegant-divider i { color: var(--gold); font-size: 0.5rem; margin: 0 15px; }
 
-        /* ================= HERO ================= */
+        /* ================= HERO (INTOCABLE) ================= */
         .hero { text-align: center; padding: 60px 20px 20px; position: relative; }
         .xv-bg {
             position: absolute; top: 0px; left: 0; width: 100%;
@@ -120,21 +132,21 @@
         .pol-2 { transform: rotate(8deg); right: -10px; top: 40px; z-index: 2; }
         .polaroid img { width: 200px; height: 250px; object-fit: cover; border: 1px solid #f0f0f0; }
 
-        /* ================= SECCIONES FLUIDAS ================= */
-        .fluid-section { padding: 40px 30px; text-align: center; }
+        /* ================= SECCIONES EDITORIALES ================= */
+        .fluid-section { padding: 50px 30px; text-align: center; }
         
-        .msg-text { font-family: var(--font-serif); font-style: italic; font-size: 1.25rem; color: var(--wine-dark); margin-bottom: 40px; line-height: 1.7; opacity: 0.9; }
-        .names-title { font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; color: var(--mauve-medium); margin-bottom: 10px; font-weight: 600; }
-        .cursive-name { font-family: var(--font-cursive); font-size: 4rem; color: var(--wine-dark); line-height: 0.9; margin-bottom: 20px; }
+        .msg-text { font-family: var(--font-serif); font-style: italic; font-size: 1.35rem; color: var(--wine-dark); margin-bottom: 50px; line-height: 1.8; opacity: 0.9; letter-spacing: 0.5px;}
+        .names-title { font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--mauve-medium); margin-bottom: 15px; font-weight: 600; }
+        .cursive-name { font-family: var(--font-cursive); font-size: 4.5rem; color: var(--wine-dark); line-height: 0.8; margin-bottom: 30px; }
 
-        .section-title { font-family: var(--font-serif); font-size: 2.8rem; color: var(--wine-dark); margin-bottom: 25px; line-height: 1.2; }
+        .section-title { font-family: var(--font-serif); font-size: 3rem; color: var(--wine-dark); margin-bottom: 25px; line-height: 1.2; font-style: italic; }
 
-        /* ================= CALENDARIO WIDGET ================= */
+        /* ================= CALENDARIO ================= */
         .calendar-grid {
             display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px;
-            font-family: var(--font-sans); font-size: 0.95rem; max-width: 320px; margin: 0 auto 10px; color: var(--wine-dark);
+            font-family: var(--font-sans); font-size: 0.95rem; max-width: 300px; margin: 0 auto 10px; color: var(--wine-dark);
         }
-        .day-name { color: var(--mauve-medium); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
+        .day-name { color: var(--mauve-medium); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
         .day { padding: 8px 0; display: flex; align-items: center; justify-content: center; font-weight: 400; }
         .day.highlight {
             background: var(--wine-dark); color: #fff; border-radius: 50%;
@@ -143,87 +155,96 @@
         }
 
         .btn-gold {
-            display: inline-block; padding: 14px 40px; background: var(--gold-gradient);
-            color: #fff; font-family: var(--font-sans); font-size: 0.9rem; letter-spacing: 3px;
-            text-transform: uppercase; text-decoration: none; border-radius: 30px; font-weight: 600;
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); transition: transform 0.3s; margin-top: 25px;
+            display: inline-block; padding: 15px 45px; background: var(--gold-gradient);
+            color: #fff; font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 4px;
+            text-transform: uppercase; text-decoration: none; border-radius: 40px; font-weight: 600;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); margin-top: 35px;
         }
-        .btn-gold:hover { transform: translateY(-3px); }
+        .btn-gold:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4); }
 
-        /* ================= UBICACIONES ================= */
-        .location-block { margin-bottom: 60px; }
-        .loc-img { width: 100%; height: 240px; object-fit: cover; border-radius: 20px; margin-bottom: 25px; box-shadow: 0 15px 35px rgba(110, 44, 62, 0.2); }
-        .loc-title { font-family: var(--font-cursive); font-size: 3.5rem; color: var(--wine-dark); margin-bottom: 5px; line-height: 1;}
-        .loc-desc { font-family: var(--font-sans); color: var(--wine-dark); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.8; opacity: 0.85; }
+        /* ================= UBICACIONES (Diseño de Arco) ================= */
+        .location-block { margin-bottom: 70px; }
+        /* Imagen con corte en arco arriba */
+        .loc-img { 
+            width: 100%; height: 300px; object-fit: cover; 
+            border-radius: 150px 150px 10px 10px; /* Diseño Arch */
+            margin-bottom: 30px; box-shadow: 0 20px 40px rgba(110, 44, 62, 0.15); 
+            border: 5px solid rgba(255,255,255,0.7);
+        }
+        .loc-title { font-family: var(--font-cursive); font-size: 4rem; color: var(--wine-dark); margin-bottom: 10px; line-height: 0.9;}
+        .loc-desc { font-family: var(--font-sans); color: var(--wine-dark); font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 25px; line-height: 2; opacity: 0.85; text-transform: uppercase; }
 
-        /* ================= ITINERARIO ================= */
-        .timeline { position: relative; margin: 40px 0; padding: 20px 0; overflow: hidden; }
-        .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: linear-gradient(to bottom, transparent, var(--mauve-medium), transparent); transform: translateX(-50%); }
+        /* ================= ITINERARIO (Minimalista y Delicado) ================= */
+        .timeline { position: relative; margin: 50px 0; padding: 20px 0; overflow: hidden; }
+        .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--mauve-medium); transform: translateX(-50%); opacity: 0.5; }
 
-        .tl-item { position: relative; width: 50%; margin-bottom: 40px; opacity: 0; display: flex; flex-direction: column; }
-        .tl-item.left { left: 0; padding-right: 30px; align-items: flex-end; text-align: right; transform: translateX(-120px); }
-        .tl-item.right { left: 50%; padding-left: 30px; align-items: flex-start; text-align: left; transform: translateX(120px); }
-        .tl-item.show { opacity: 1; transform: translateX(0); transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .tl-item { position: relative; width: 50%; margin-bottom: 50px; opacity: 0; display: flex; flex-direction: column; }
+        .tl-item.left { left: 0; padding-right: 35px; align-items: flex-end; text-align: right; transform: translateX(-80px); }
+        .tl-item.right { left: 50%; padding-left: 35px; align-items: flex-start; text-align: left; transform: translateX(80px); }
+        .tl-item.show { opacity: 1; transform: translateX(0); transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
         .tl-item::after {
-            content: ''; position: absolute; top: 12px; width: 16px; height: 16px;
-            background: #fff; border: 3px solid var(--gold); border-radius: 50%;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            content: ''; position: absolute; top: 12px; width: 12px; height: 12px;
+            background: var(--bg-satin-1); border: 2px solid var(--gold); border-radius: 50%;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
         }
-        .tl-item.left::after { right: -9px; }
-        .tl-item.right::after { left: -9px; }
+        .tl-item.left::after { right: -7px; }
+        .tl-item.right::after { left: -7px; }
 
-        .tl-time { font-family: var(--font-sans); font-size: 1.2rem; font-weight: 600; letter-spacing: 2px; color: var(--mauve-medium); line-height: 1; margin-bottom: 5px; }
-        .tl-desc { font-family: var(--font-serif); font-size: 2.2rem; color: var(--wine-dark); margin-top: -5px; }
+        .tl-time { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 500; letter-spacing: 3px; color: var(--mauve-medium); line-height: 1; margin-bottom: 8px; }
+        .tl-desc { font-family: var(--font-serif); font-size: 2.2rem; color: var(--wine-dark); margin-top: -5px; font-style: italic; }
 
         /* ================= GALERÍA ================= */
-        .gallery-wrapper { display: flex; overflow-x: auto; gap: 20px; padding: 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+        .gallery-wrapper { display: flex; overflow-x: auto; gap: 25px; padding: 30px 20px 50px; scroll-snap-type: x mandatory; scrollbar-width: none; }
         .gallery-wrapper::-webkit-scrollbar { display: none; }
-        .gal-item { flex: 0 0 85%; scroll-snap-align: center; border-radius: 20px; overflow: hidden; height: 420px; box-shadow: 0 15px 35px rgba(110, 44, 62, 0.2); border: 4px solid #fff; }
+        .gal-item { flex: 0 0 82%; scroll-snap-align: center; border-radius: 15px; overflow: hidden; height: 450px; box-shadow: 0 20px 45px rgba(110, 44, 62, 0.2); }
         .gal-item img { width: 100%; height: 100%; object-fit: cover; }
 
         /* ================= VESTIMENTA Y REGALOS ================= */
-        .info-icons-row { display: flex; justify-content: center; align-items: flex-end; gap: 25px; margin-bottom: 25px; }
-        .custom-svg { width: 75px; height: 75px; fill: none; stroke: var(--wine-dark); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-        .info-text { font-family: var(--font-sans); font-size: 1rem; color: var(--wine-dark); max-width: 90%; margin: 0 auto; line-height: 1.8; opacity: 0.9; }
+        .info-icons-row { display: flex; justify-content: center; align-items: flex-end; gap: 30px; margin-bottom: 30px; }
+        .custom-svg { width: 80px; height: 80px; fill: none; stroke: var(--wine-dark); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+        .info-text { font-family: var(--font-sans); font-size: 0.95rem; letter-spacing: 1px; color: var(--wine-dark); max-width: 85%; margin: 0 auto; line-height: 2; opacity: 0.85; }
 
-        /* ================= ASISTENCIA (FOOTER ANCLADO FULL-BLEED) ================= */
+        /* ================= ASISTENCIA (FOOTER FULL-BLEED ELEGANTE) ================= */
         .footer-section {
             background: var(--wine-dark);
             color: var(--white);
-            padding: 60px 30px 80px;
+            padding: 80px 30px 100px;
             text-align: center;
-            margin-top: 40px;
-            /* Rompe el flujo para extenderse de lado a lado */
+            margin-top: 50px;
             width: 100%;
+            position: relative;
         }
         
-        .footer-section .section-title { color: var(--white); font-family: var(--font-cursive); font-size: 4.5rem; margin-bottom: 15px; }
-        .footer-section .info-text { color: var(--white); opacity: 0.8; margin-bottom: 35px; }
+        .footer-section .section-title { color: var(--gold); font-family: var(--font-cursive); font-size: 5rem; margin-bottom: 10px; line-height: 0.9; text-shadow: none; font-style: normal; }
+        .footer-section .info-text { color: var(--white); opacity: 0.8; margin-bottom: 40px; font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; text-transform: none; letter-spacing: 1px; }
 
+        /* Input Minimalista */
         .rsvp-input {
-            width: 100%; padding: 18px; border: none; border-radius: 30px;
-            font-family: var(--font-sans); text-align: center; margin-bottom: 25px; outline: none;
-            font-size: 1.05rem; background: rgba(255,255,255,0.9); box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            color: var(--wine-dark);
+            width: 100%; padding: 15px 0; border: none; border-bottom: 1px solid rgba(255,255,255,0.4);
+            font-family: var(--font-sans); text-align: center; margin-bottom: 40px; outline: none;
+            font-size: 1.1rem; background: transparent; color: var(--white); border-radius: 0;
+            transition: border-color 0.3s;
         }
+        .rsvp-input::placeholder { color: rgba(255,255,255,0.5); font-weight: 300; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
+        .rsvp-input:focus { border-bottom: 1px solid var(--gold); }
         
         .btn-wa {
-            display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
-            padding: 18px; background: #25D366; color: white; font-family: var(--font-sans);
-            font-size: 1.1rem; font-weight: 600; text-decoration: none; border-radius: 30px;
-            border: none; cursor: pointer; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); transition: transform 0.3s;
+            display: inline-flex; align-items: center; justify-content: center; gap: 15px; width: 100%;
+            padding: 20px; background: #fff; color: var(--wine-dark); font-family: var(--font-sans);
+            font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; text-decoration: none; border-radius: 40px;
+            border: none; cursor: pointer; box-shadow: 0 15px 30px rgba(0,0,0,0.2); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        .btn-wa:hover { transform: translateY(-3px); }
+        .btn-wa:hover { transform: translateY(-4px); }
 
         /* ================= BOTÓN DE AUDIO ================= */
         .btn-audio {
-            position: fixed; bottom: 20px; right: 20px; width: 55px; height: 55px; border-radius: 50%;
-            background: var(--gold-gradient); color: #fff; border: none; font-size: 1.4rem;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5); z-index: 9000; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; border-radius: 50%;
+            background: var(--gold-gradient); color: #fff; border: none; font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); z-index: 9000; cursor: pointer; display: flex; align-items: center; justify-content: center;
         }
         .btn-audio.playing { animation: pulseAudio 2s infinite; }
-        @keyframes pulseAudio { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); } 70% { box-shadow: 0 0 0 15px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+        @keyframes pulseAudio { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); } 70% { box-shadow: 0 0 0 20px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
 
     </style>
 </head>
@@ -243,7 +264,6 @@
     </div>
 
     <div class="container" id="main-container">
-        
         <div class="content-layer">
             
             <section class="hero">
@@ -266,23 +286,24 @@
             </section>
 
             <section class="fluid-section">
-                <h2 class="section-title">Llegó nuestro día</h2>
                 <p class="msg-text">
                     "Hay momentos en la vida que se atesoran en el corazón para siempre, hoy dejo atrás mi niñez y comienzo una etapa hacia nuevos sueños. Acompáñanos a celebrar este día tan especial."
                 </p>
                 
-                <p class="names-title">Con la bendición de Dios y mis Padres:</p>
+                <p class="names-title">Con la bendición de Dios y mis Padres</p>
                 <p class="cursive-name">César Iván Ramirez</p>
-                <p class="cursive-name" style="margin-bottom: 40px;">y Blanca Yazmin Barajas</p>
+                <p class="cursive-name" style="margin-bottom: 50px;">y Blanca Yazmin Barajas</p>
                 
-                <p class="names-title">Mis Padrinos:</p>
+                <p class="names-title">Mis Padrinos</p>
                 <p class="cursive-name">José Magdaleno Rocha</p>
                 <p class="cursive-name">y Nohelia Irasema Barajas</p>
             </section>
 
+            <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
+
             <section class="fluid-section">
-                <h2 class="section-title" style="margin-bottom: 5px;">Agosto</h2>
-                <p style="font-family: var(--font-sans); letter-spacing: 6px; color: var(--mauve-medium); margin-bottom: 30px; font-weight: 600;">2026</p>
+                <h2 class="section-title shimmer-text" style="margin-bottom: 5px;">Agosto</h2>
+                <p style="font-family: var(--font-sans); letter-spacing: 8px; color: var(--mauve-medium); margin-bottom: 40px; font-weight: 500;">2026</p>
                 
                 <div class="calendar-grid">
                     <div class="day-name">D</div><div class="day-name">L</div><div class="day-name">M</div><div class="day-name">M</div><div class="day-name">J</div><div class="day-name">V</div><div class="day-name">S</div>
@@ -297,11 +318,11 @@
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+Chantal&dates=20260822T230000Z/20260823T080000Z" target="_blank" class="btn-gold">Save the Date</a>
             </section>
 
-            <div class="elegant-divider"></div>
+            <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
 
             <section class="fluid-section">
                 <div class="location-block">
-                    <h2 class="section-title">Ceremonia</h2>
+                    <h2 class="section-title shimmer-text">Ceremonia</h2>
                     <img src="assets/ceremonia.jpg" class="loc-img" alt="Ceremonia">
                     <h3 class="loc-title">Misa de Acción de Gracias</h3>
                     <p class="loc-desc">5ta avenida 321 Col. Satélite del Norte,<br>Salinas Victoria Nuevo León.<br><strong>6:00 p.m.</strong></p>
@@ -309,7 +330,7 @@
                 </div>
 
                 <div class="location-block" style="margin-bottom: 0;">
-                    <h2 class="section-title">Recepción</h2>
+                    <h2 class="section-title shimmer-text">Recepción</h2>
                     <img src="assets/recepcion.jpg" class="loc-img" alt="Recepción">
                     <h3 class="loc-title">Centro Social</h3>
                     <p class="loc-desc">Calle Francisco I. Madero 220<br>Centro de Salinas Victoria<br><strong>7:30 p.m.</strong></p>
@@ -317,10 +338,10 @@
                 </div>
             </section>
 
-            <div class="elegant-divider"></div>
+            <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
 
             <section class="fluid-section" style="padding-bottom: 0;">
-                <h2 class="section-title">Itinerario</h2>
+                <h2 class="section-title shimmer-text">Itinerario</h2>
                 <div class="timeline">
                     <div class="tl-item left observer-el"><span class="tl-time">18:00</span><span class="tl-desc">Misa</span></div>
                     <div class="tl-item right observer-el"><span class="tl-time">19:30</span><span class="tl-desc">Recepción</span></div>
@@ -331,10 +352,10 @@
                 </div>
             </section>
 
-            <div class="elegant-divider"></div>
+            <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
 
             <section class="fluid-section" style="padding-left: 0; padding-right: 0;">
-                <h2 class="section-title">Galería</h2>
+                <h2 class="section-title shimmer-text">Galería</h2>
                 <div class="gallery-wrapper">
                     <div class="gal-item"><img src="assets/galeria2.jpg" alt="Foto"></div>
                     <div class="gal-item"><img src="assets/galeria3.jpg" alt="Foto"></div>
@@ -344,10 +365,10 @@
                 </div>
             </section>
 
-            <div class="elegant-divider"></div>
+            <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
 
             <section class="fluid-section">
-                <h2 class="section-title">Vestimenta</h2>
+                <h2 class="section-title shimmer-text">Vestimenta</h2>
                 <div class="info-icons-row">
                     <svg class="custom-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <path d="M25 20 L40 10 L60 10 L75 20 L75 90 L25 90 Z" />
@@ -355,18 +376,18 @@
                         <path d="M25 20 L40 45 L50 80 L60 45 L75 20" />
                         <path d="M48 40 L52 40 L49 65 L50 67 L48 65 Z" />
                     </svg>
-                    <svg class="custom-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="height: 85px;">
+                    <svg class="custom-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="height: 90px;">
                         <path d="M30 20 C40 15, 45 25, 50 25 C55 25, 60 15, 70 20 C65 40, 60 40, 60 45 L85 95 L15 95 L40 45 C40 40, 35 40, 30 20 Z" />
                     </svg>
                 </div>
                 <p class="info-text">Amablemente, el color rosado está reservado para la quinceañera.</p>
             </section>
 
-            <div class="elegant-divider"></div>
+            <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
 
             <section class="fluid-section" style="padding-bottom: 0;">
-                <h2 class="section-title">Mesa de Regalos</h2>
-                <div class="info-icons-row" style="margin-bottom: 20px;">
+                <h2 class="section-title shimmer-text">Mesa de Regalos</h2>
+                <div class="info-icons-row" style="margin-bottom: 30px;">
                     <svg class="custom-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                     </svg>
@@ -375,17 +396,20 @@
             </section>
 
             <section class="footer-section">
-                <h2 class="section-title">Te Esperamos</h2>
-                <p class="info-text">Por favor confirma tu asistencia para reservar tu lugar en este día tan especial.</p>
+                <h2 class="section-title shimmer-text">Te Esperamos</h2>
+                <p class="info-text">Nos encantaría compartir este momento contigo. Por favor confirma tu asistencia.</p>
                 
                 <input type="text" id="nombreInvitado" class="rsvp-input" placeholder="Tu Nombre y Apellido">
                 <button onclick="enviarWA()" class="btn-wa">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> Confirmar Asistencia
+                    CONFIRMAR ASISTENCIA
                 </button>
             </section>
 
-        </div> </div> <script>
-        // --- DESTELLOS DINÁMICOS (SOLO DORADOS Y BLANCOS) ---
+        </div>
+    </div>
+
+    <script>
+        // --- DESTELLOS DINÁMICOS ---
         function createSparkles() {
             const container = document.getElementById('main-container');
             for(let i=0; i<30; i++){
