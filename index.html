@@ -27,7 +27,7 @@
             /* Tipografías */
             --font-serif: 'Playfair Display', serif;
             --font-sans: 'Montserrat', sans-serif;
-            --font-cursive: 'Alex Brush', cursive; /* Nueva cursiva elegante */
+            --font-cursive: 'Alex Brush', cursive;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -46,29 +46,16 @@
 
         /* ================= DESTELLOS Y BRILLOS ================= */
         .sparkle {
-            position: absolute;
-            width: 3px; height: 3px;
-            background: #fff;
-            border-radius: 50%;
+            position: absolute; width: 3px; height: 3px; background: #fff; border-radius: 50%;
             box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.8), 0 0 15px 5px rgba(212, 175, 55, 0.5);
-            pointer-events: none;
-            opacity: 0;
-            animation: glimmer 4s infinite linear;
-            z-index: 0;
+            pointer-events: none; opacity: 0; animation: glimmer 4s infinite linear; z-index: 0;
         }
-        @keyframes glimmer {
-            0% { opacity: 0; transform: scale(0) rotate(0deg); }
-            50% { opacity: 1; transform: scale(1.5) rotate(180deg); }
-            100% { opacity: 0; transform: scale(0) rotate(360deg); }
-        }
+        @keyframes glimmer { 0% { opacity: 0; transform: scale(0) rotate(0deg); } 50% { opacity: 1; transform: scale(1.5) rotate(180deg); } 100% { opacity: 0; transform: scale(0) rotate(360deg); } }
 
         .shimmer-text {
             background: linear-gradient(90deg, var(--mauve-dark) 0%, var(--gold) 50%, var(--mauve-dark) 100%);
-            background-size: 200% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: shimmer 4s infinite linear;
+            background-size: 200% auto; color: transparent; -webkit-background-clip: text;
+            background-clip: text; animation: shimmer 4s infinite linear;
         }
         @keyframes shimmer { to { background-position: 200% center; } }
 
@@ -110,20 +97,24 @@
         /* ================= CONTENEDOR PRINCIPAL ================= */
         .container {
             max-width: 480px; margin: 0 auto; position: relative;
-            background: rgba(255,255,255,0.3); backdrop-filter: blur(10px);
-            box-shadow: 0 0 50px rgba(169, 92, 113, 0.2); min-height: 100vh;
-            padding-bottom: 60px; overflow: hidden;
+            background: rgba(255,255,255,0.25); backdrop-filter: blur(8px);
+            box-shadow: 0 0 50px rgba(169, 92, 113, 0.15); min-height: 100vh;
+            padding-bottom: 80px; overflow: hidden;
         }
-
-        /* Elementos de contenido superior */
         .content-layer { position: relative; z-index: 2; }
 
+        /* Elemento divisor sutil (Línea elegante) */
+        .elegant-divider {
+            width: 60%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 40px auto; opacity: 0.6;
+        }
+
         /* ================= HERO ================= */
-        .hero { text-align: center; padding: 60px 20px 40px; position: relative; }
+        .hero { text-align: center; padding: 60px 20px 20px; position: relative; }
         .xv-bg {
             position: absolute; top: 10px; left: 0; width: 100%;
-            font-size: 16rem; font-family: var(--font-serif); color: rgba(255,255,255,0.8);
-            line-height: 1; z-index: -1; letter-spacing: -10px;
+            font-size: 16rem; font-family: var(--font-serif); color: rgba(255,255,255,0.9);
+            line-height: 1; z-index: -1; letter-spacing: -10px; text-shadow: 0 10px 30px rgba(169, 92, 113, 0.1);
         }
         .hero-title { font-family: var(--font-cursive); font-size: 5.5rem; color: var(--text-dark); margin: 10px 0 0; line-height: 1; text-shadow: 2px 2px 4px rgba(0,0,0,0.05); }
         .hero-date { font-family: var(--font-sans); font-size: 1rem; letter-spacing: 4px; color: var(--mauve-dark); margin-bottom: 30px; font-weight: 600; }
@@ -141,20 +132,21 @@
         .pol-2 { transform: rotate(8deg); right: -10px; top: 40px; z-index: 2; }
         .polaroid img { width: 200px; height: 250px; object-fit: cover; border: 1px solid #f0f0f0; }
 
-        /* ================= TEXTOS ================= */
-        .section { padding: 40px 30px; text-align: center; }
+        /* ================= SECCIONES INTEGRADAS (Flujo Continuo) ================= */
+        .fluid-section { padding: 40px 30px; text-align: center; }
+        
         .msg-text { font-style: italic; font-size: 1.15rem; color: var(--text-light); margin-bottom: 40px; padding: 0 10px; }
         .names-title { font-family: var(--font-sans); font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; color: var(--mauve-light); margin-bottom: 10px; font-weight: 600; }
         .cursive-name { font-family: var(--font-cursive); font-size: 3.5rem; color: var(--mauve-dark); line-height: 1.2; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
 
-        /* ================= MARCOS FINOS (Ubicaciones) ================= */
-        .framed-box {
-            background: rgba(255,255,255,0.85); border: 1px solid var(--mauve-light); border-radius: 20px;
-            padding: 30px 20px; margin-bottom: 35px; box-shadow: 0 10px 30px rgba(169, 92, 113, 0.1);
-        }
-        .box-title { font-size: 2rem; letter-spacing: 4px; text-transform: uppercase; color: var(--mauve-dark); margin-bottom: 20px; }
+        .section-title { font-size: 2.2rem; letter-spacing: 4px; text-transform: uppercase; color: var(--mauve-dark); margin-bottom: 25px; }
+
+        /* Ubicaciones Fluidas (Sin cajas) */
+        .location-block { margin-bottom: 50px; }
+        .loc-img { width: 100%; height: 220px; object-fit: cover; border-radius: 20px; margin-bottom: 25px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .loc-title { font-family: var(--font-serif); font-size: 2rem; color: var(--text-dark); margin-bottom: 5px; }
+        .loc-desc { font-family: var(--font-sans); color: var(--text-light); font-size: 1rem; margin-bottom: 20px; line-height: 1.8; }
         
-        .loc-img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .btn-pill {
             display: inline-block; padding: 12px 35px; background: var(--mauve-dark);
             color: #fff; font-family: var(--font-sans); font-size: 0.9rem; letter-spacing: 2px;
@@ -167,19 +159,12 @@
         .timeline { position: relative; margin: 40px 0; padding: 20px 0; overflow: hidden; }
         .timeline::before {
             content: ''; position: absolute; top: 0; bottom: 0; left: 50%;
-            width: 2px; background: var(--mauve-light); transform: translateX(-50%);
+            width: 2px; background: linear-gradient(to bottom, transparent, var(--mauve-light), transparent); transform: translateX(-50%);
         }
 
-        .tl-item {
-            position: relative; width: 50%; margin-bottom: 40px; opacity: 0;
-            display: flex; flex-direction: column;
-        }
-        
-        /* Animaciones iniciales escondidas a los lados */
+        .tl-item { position: relative; width: 50%; margin-bottom: 40px; opacity: 0; display: flex; flex-direction: column; }
         .tl-item.left { left: 0; padding-right: 30px; align-items: flex-end; text-align: right; transform: translateX(-120px); }
         .tl-item.right { left: 50%; padding-left: 30px; align-items: flex-start; text-align: left; transform: translateX(120px); }
-        
-        /* Clase activadora */
         .tl-item.show { opacity: 1; transform: translateX(0); transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 
         .tl-item::after {
@@ -191,46 +176,40 @@
         .tl-item.right::after { left: -9px; }
 
         .tl-time { font-family: var(--font-serif); font-size: 2rem; font-weight: bold; color: var(--text-dark); line-height: 1; }
-        .tl-desc { font-family: var(--font-cursive); font-size: 2.2rem; color: var(--mauve-dark); margin-top: -5px; }
+        .tl-desc { font-family: var(--font-cursive); font-size: 2.5rem; color: var(--mauve-dark); margin-top: -5px; }
 
         /* ================= GALERÍA HORIZONTAL ================= */
-        .gallery-wrapper { display: flex; overflow-x: auto; gap: 15px; padding: 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+        .gallery-wrapper { display: flex; overflow-x: auto; gap: 20px; padding: 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
         .gallery-wrapper::-webkit-scrollbar { display: none; }
-        .gal-item { flex: 0 0 80%; scroll-snap-align: center; border-radius: 15px; overflow: hidden; height: 380px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border: 4px solid #fff; }
+        .gal-item { flex: 0 0 85%; scroll-snap-align: center; border-radius: 20px; overflow: hidden; height: 400px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 4px solid #fff; }
         .gal-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* ================= CÓDIGO DE VESTIMENTA Y REGALOS ================= */
-        .svg-row { display: flex; justify-content: center; align-items: flex-end; gap: 20px; margin-bottom: 20px; }
-        .custom-svg { width: 65px; height: 65px; fill: none; stroke: var(--mauve-dark); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-        
-        .solid-block {
-            background: var(--mauve-dark); color: #fff; padding: 40px 30px;
-            border-radius: 20px; margin: 20px 20px 40px; box-shadow: 0 15px 30px rgba(169, 92, 113, 0.4);
-            position: relative; overflow: hidden;
-        }
-        .solid-block h2 { color: #fff; font-family: var(--font-sans); letter-spacing: 4px; font-size: 1.6rem; margin-bottom: 20px; }
-        .solid-block p { font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 25px; }
-        
-        .svg-white { width: 60px; height: 60px; stroke: #fff; margin-bottom: 15px; }
+        /* ================= CÓDIGO DE VESTIMENTA Y REGALOS (Fluidos) ================= */
+        .info-icons-row { display: flex; justify-content: center; align-items: flex-end; gap: 25px; margin-bottom: 25px; }
+        .custom-svg { width: 75px; height: 75px; fill: none; stroke: var(--mauve-dark); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); }
+        .info-text { font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-light); max-width: 90%; margin: 0 auto; line-height: 1.8; }
 
+        /* ================= ASISTENCIA ================= */
         .rsvp-input {
-            width: 100%; padding: 15px; border: none; border-radius: 30px;
-            font-family: var(--font-sans); text-align: center; margin-bottom: 20px; outline: none;
-            font-size: 1rem; box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+            width: 90%; padding: 18px; border: 1px solid rgba(169, 92, 113, 0.3); border-radius: 30px;
+            font-family: var(--font-sans); text-align: center; margin-bottom: 25px; outline: none;
+            font-size: 1.05rem; background: rgba(255,255,255,0.7); box-shadow: inset 0 2px 10px rgba(0,0,0,0.03);
+            transition: border-color 0.3s;
         }
+        .rsvp-input:focus { border-color: var(--mauve-dark); }
         .btn-wa {
-            display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
-            padding: 15px; background: #25D366; color: white; font-family: var(--font-sans);
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 90%;
+            padding: 18px; background: linear-gradient(135deg, #25D366, #128C7E); color: white; font-family: var(--font-sans);
             font-size: 1.1rem; font-weight: 600; text-decoration: none; border-radius: 30px;
-            border: none; cursor: pointer; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); transition: transform 0.3s;
+            border: none; cursor: pointer; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); transition: transform 0.3s;
         }
         .btn-wa:hover { transform: translateY(-3px); }
 
         /* Botón de Audio */
         .btn-audio {
-            position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; border-radius: 50%;
-            background: var(--gold-gradient); color: #fff; border: none; font-size: 1.2rem;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5); z-index: 9000; cursor: pointer;
+            position: fixed; bottom: 20px; right: 20px; width: 55px; height: 55px; border-radius: 50%;
+            background: var(--gold-gradient); color: #fff; border: none; font-size: 1.4rem;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5); z-index: 9000; cursor: pointer; display: flex; align-items: center; justify-content: center;
         }
         .btn-audio.playing { animation: pulseAudio 2s infinite; }
         @keyframes pulseAudio { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); } 70% { box-shadow: 0 0 0 15px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
@@ -274,7 +253,7 @@
                 </div>
             </section>
 
-            <section class="section">
+            <section class="fluid-section">
                 <h2 style="font-family: var(--font-sans); font-size: 1.2rem; letter-spacing: 5px; color: var(--mauve-dark); margin-bottom: 20px;">LLEGÓ NUESTRO DÍA</h2>
                 <p class="msg-text">
                     Hay momentos en la vida que se atesoran en el corazón para siempre, hoy dejo atrás mi niñez y comienzo una etapa hacia nuevos sueños. Acompáñanos a celebrar este día tan especial.
@@ -282,63 +261,52 @@
                 
                 <h3 class="names-title">Con la bendición de Dios y mis Padres:</h3>
                 <p class="cursive-name">César Iván Ramirez</p>
-                <p class="cursive-name" style="margin-bottom: 30px;">y Blanca Yazmin Barajas</p>
+                <p class="cursive-name" style="margin-bottom: 40px;">y Blanca Yazmin Barajas</p>
                 
                 <h3 class="names-title">Mis Padrinos:</h3>
                 <p class="cursive-name">José Magdaleno Rocha</p>
                 <p class="cursive-name">y Nohelia Irasema Barajas</p>
             </section>
 
-            <section class="section">
-                <div class="framed-box">
-                    <h2 class="box-title shimmer-text">Ceremonia</h2>
+            <div class="elegant-divider"></div>
+
+            <section class="fluid-section">
+                
+                <div class="location-block">
+                    <h2 class="section-title shimmer-text">Ceremonia</h2>
                     <img src="assets/ceremonia.jpg" class="loc-img" alt="Ceremonia">
-                    <p style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-dark); margin-bottom: 5px;">Misa de Acción de Gracias</p>
-                    <p style="font-family: var(--font-sans); color: var(--text-light); font-size: 0.95rem; margin-bottom: 20px;">5ta avenida 321 Col. Satélite del Norte,<br>Salinas Victoria Nuevo León.<br><strong>6:00 p.m.</strong></p>
+                    <h3 class="loc-title">Misa de Acción de Gracias</h3>
+                    <p class="loc-desc">5ta avenida 321 Col. Satélite del Norte,<br>Salinas Victoria Nuevo León.<br><strong>6:00 p.m.</strong></p>
                     <a href="https://maps.app.goo.gl/hDMHoEA1dyYNUyzs5?g_st=iw" target="_blank" class="btn-pill">Ver Ubicación</a>
                 </div>
 
-                <div class="framed-box">
-                    <h2 class="box-title shimmer-text">Recepción</h2>
+                <div class="location-block" style="margin-bottom: 0;">
+                    <h2 class="section-title shimmer-text">Recepción</h2>
                     <img src="assets/recepcion.jpg" class="loc-img" alt="Recepción">
-                    <p style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-dark); margin-bottom: 5px;">Centro Social Salinas Victoria</p>
-                    <p style="font-family: var(--font-sans); color: var(--text-light); font-size: 0.95rem; margin-bottom: 20px;">Calle Francisco I. Madero 220<br>Centro de Salinas Victoria</p>
+                    <h3 class="loc-title">Centro Social Salinas Victoria</h3>
+                    <p class="loc-desc">Calle Francisco I. Madero 220<br>Centro de Salinas Victoria</p>
                     <a href="https://maps.app.goo.gl/vp9gc3FrjbPDbGLF9?g_st=iw" target="_blank" class="btn-pill">Ver Ubicación</a>
                 </div>
             </section>
 
-            <section class="section">
-                <h2 class="box-title shimmer-text" style="text-align: center; font-size: 2.5rem;">Itinerario</h2>
+            <div class="elegant-divider"></div>
+
+            <section class="fluid-section" style="padding-bottom: 0;">
+                <h2 class="section-title shimmer-text">Itinerario</h2>
                 <div class="timeline">
-                    <div class="tl-item left observer-el">
-                        <span class="tl-time">18:00</span>
-                        <span class="tl-desc">Misa</span>
-                    </div>
-                    <div class="tl-item right observer-el">
-                        <span class="tl-time">19:30</span>
-                        <span class="tl-desc">Recepción</span>
-                    </div>
-                    <div class="tl-item left observer-el">
-                        <span class="tl-time">20:00</span>
-                        <span class="tl-desc">Vals</span>
-                    </div>
-                    <div class="tl-item right observer-el">
-                        <span class="tl-time">20:30</span>
-                        <span class="tl-desc">Baile</span>
-                    </div>
-                    <div class="tl-item left observer-el">
-                        <span class="tl-time">21:30</span>
-                        <span class="tl-desc">Cena</span>
-                    </div>
-                    <div class="tl-item right observer-el">
-                        <span class="tl-time">02:00</span>
-                        <span class="tl-desc">Fin del Evento</span>
-                    </div>
+                    <div class="tl-item left observer-el"><span class="tl-time">18:00</span><span class="tl-desc">Misa</span></div>
+                    <div class="tl-item right observer-el"><span class="tl-time">19:30</span><span class="tl-desc">Recepción</span></div>
+                    <div class="tl-item left observer-el"><span class="tl-time">20:00</span><span class="tl-desc">Vals</span></div>
+                    <div class="tl-item right observer-el"><span class="tl-time">20:30</span><span class="tl-desc">Baile</span></div>
+                    <div class="tl-item left observer-el"><span class="tl-time">21:30</span><span class="tl-desc">Cena</span></div>
+                    <div class="tl-item right observer-el"><span class="tl-time">02:00</span><span class="tl-desc">Fin del Evento</span></div>
                 </div>
             </section>
 
-            <section style="padding: 20px 0;">
-                <h2 class="box-title shimmer-text" style="text-align: center; font-size: 2.5rem;">Galería</h2>
+            <div class="elegant-divider"></div>
+
+            <section class="fluid-section" style="padding-left: 0; padding-right: 0;">
+                <h2 class="section-title shimmer-text">Galería</h2>
                 <div class="gallery-wrapper">
                     <div class="gal-item"><img src="assets/galeria2.jpg" alt="Foto"></div>
                     <div class="gal-item"><img src="assets/galeria3.jpg" alt="Foto"></div>
@@ -348,51 +316,56 @@
                 </div>
             </section>
 
-            <section class="section">
-                <div class="framed-box">
-                    <h2 class="box-title">Vestimenta</h2>
-                    <div class="svg-row">
-                        <svg class="custom-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M25 20 L40 10 L60 10 L75 20 L75 90 L25 90 Z" />
-                            <path d="M40 10 L50 40 L60 10" />
-                            <path d="M25 20 L40 45 L50 80 L60 45 L75 20" />
-                            <path d="M48 40 L52 40 L49 65 L50 67 L48 65 Z" />
-                        </svg>
-                        <svg class="custom-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="height: 75px;">
-                            <path d="M30 20 C40 15, 45 25, 50 25 C55 25, 60 15, 70 20 C65 40, 60 40, 60 45 L85 95 L15 95 L40 45 C40 40, 35 40, 30 20 Z" />
-                        </svg>
-                    </div>
-                    <p style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-light);">Amablemente, el color rosado está reservado para la quinceañera.</p>
+            <div class="elegant-divider"></div>
+
+            <section class="fluid-section">
+                <h2 class="section-title shimmer-text">Vestimenta</h2>
+                <div class="info-icons-row">
+                    <svg class="custom-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25 20 L40 10 L60 10 L75 20 L75 90 L25 90 Z" />
+                        <path d="M40 10 L50 40 L60 10" />
+                        <path d="M25 20 L40 45 L50 80 L60 45 L75 20" />
+                        <path d="M48 40 L52 40 L49 65 L50 67 L48 65 Z" />
+                    </svg>
+                    <svg class="custom-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="height: 85px;">
+                        <path d="M30 20 C40 15, 45 25, 50 25 C55 25, 60 15, 70 20 C65 40, 60 40, 60 45 L85 95 L15 95 L40 45 C40 40, 35 40, 30 20 Z" />
+                    </svg>
                 </div>
+                <p class="info-text">Amablemente, el color rosado está reservado para la quinceañera.</p>
             </section>
 
-            <div class="solid-block">
-                <center>
-                    <svg class="custom-svg svg-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <div class="elegant-divider"></div>
+
+            <section class="fluid-section">
+                <h2 class="section-title shimmer-text">Mesa de Regalos</h2>
+                <div class="info-icons-row" style="margin-bottom: 20px;">
+                    <svg class="custom-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                     </svg>
-                </center>
-                <h2 class="shimmer-text" style="color: #fff;">MESA DE REGALOS</h2>
-                <p style="text-align: center;">Tu presencia es lo más importante en esta noche. Pero si deseas tener un detalle con nosotros, sugerimos la dinámica de lluvia de sobres.</p>
-            </div>
+                </div>
+                <p class="info-text">Tu presencia es lo más importante en esta noche. Pero si deseas tener un detalle con nosotros, sugerimos la dinámica de lluvia de sobres.</p>
+            </section>
 
-            <div class="solid-block" style="text-align: center; margin-bottom: 60px;">
-                <h2 class="shimmer-text" style="color: #fff; font-size: 2rem;">TE ESPERAMOS</h2>
-                <p>Por favor confirma tu asistencia para reservar tu lugar.</p>
-                <input type="text" id="nombreInvitado" class="rsvp-input" placeholder="Nombre y Apellido">
+            <div class="elegant-divider"></div>
+
+            <section class="fluid-section">
+                <h2 class="section-title shimmer-text">Te Esperamos</h2>
+                <p class="info-text" style="margin-bottom: 30px;">Por favor confirma tu asistencia para reservar tu lugar.</p>
+                
+                <input type="text" id="nombreInvitado" class="rsvp-input" placeholder="Tu Nombre y Apellido">
                 <button onclick="enviarWA()" class="btn-wa">
                     <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> Confirmar Asistencia
                 </button>
-            </div>
+            </section>
 
         </div>
     </div>
 
     <script>
-        // --- DESTELLOS DINÁMICOS (Premium Vibe) ---
+        // --- DESTELLOS DINÁMICOS ---
         function createSparkles() {
             const container = document.getElementById('main-container');
-            for(let i=0; i<30; i++){
+            for(let i=0; i<25; i++){
                 let sparkle = document.createElement('div');
                 sparkle.classList.add('sparkle');
                 sparkle.style.left = Math.random() * 100 + '%';
@@ -441,16 +414,12 @@
             document.getElementById("secs").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
         }, 1000);
 
-        // --- OBSERVER DEL ITINERARIO (Activación Intercalada al hacer scroll) ---
+        // --- ANIMACIÓN ITINERARIO ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // Cuando el elemento entra en pantalla, se agrega la clase .show
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
+                if(entry.isIntersecting) { entry.target.classList.add('show'); }
             });
-        }, { threshold: 0.2 }); // Se activa cuando el 20% del elemento es visible
-
+        }, { threshold: 0.2 });
         document.querySelectorAll('.observer-el').forEach(el => observer.observe(el));
 
         // --- WHATSAPP RSVP ---
