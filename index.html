@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Chantal - Invytia</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            --pink-light: #ffe6ea;
+            --pink-medium: #ffb6c1;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-dark: #4a4a4a;
+            --white: #ffffff;
+            --font-cursive: 'Great Vibes', cursive;
+            --font-main: 'Montserrat', 'Ocean Sans', sans-serif;
+            --font-secondary: 'Century Gothic', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--white) 0%, var(--pink-light) 50%, var(--white) 100%);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .cursive {
+            font-family: var(--font-cursive);
+            color: var(--gold);
+            font-weight: normal;
+        }
+
+        /* Sparkles Background */
+        .sparkles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image: radial-gradient(var(--gold-light) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: twinkle 4s infinite linear;
+            opacity: 0.4;
+        }
+
+        @keyframes twinkle {
+            0% { transform: translateY(0); }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-50px); opacity: 0.4; }
+        }
+
+        /* Contenedor Principal */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+            position: relative;
+            z-index: 1;
+            padding-bottom: 50px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .hero img {
+            width: 250px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px auto;
+            border-top-left-radius: 150px;
+            border-top-right-radius: 150px;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            border: 3px solid var(--gold-light);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+            background: linear-gradient(45deg, var(--gold), #e8c970);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Mensaje y Padres */
+        .section {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .main-message {
+            font-family: var(--font-main);
+            font-style: italic;
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .parents-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .parents-info p {
+            font-family: var(--font-main);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .divider {
+            height: 2px;
+            width: 50%;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 30px auto;
+        }
+
+        /* Calendario Widget */
+        .calendar-widget {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--pink-light);
+            margin-bottom: 20px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-top: 15px;
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+        }
+
+        .day-name { color: var(--gold); font-weight: 600; }
+        .day { padding: 8px; text-align: center; border-radius: 50%; }
+        .day.empty { background: transparent; }
+        .day.highlight {
+            background: var(--gold);
+            color: var(--white);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            font-weight: bold;
+            transform: scale(1.1);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--gold), #e8c970);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.8rem;
+            font-family: var(--font-cursive);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            transition: transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover { transform: scale(1.05); }
+
+        /* Ubicaciones */
+        .location-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border: 1px solid var(--pink-light);
+        }
+
+        .location-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .location-info {
+            padding: 20px;
+        }
+
+        .location-info h2 { font-size: 2.2rem; margin-bottom: 10px; }
+        .location-info p { font-family: var(--font-main); font-size: 0.9rem; margin-bottom: 15px; }
+
+        .btn-map {
+            background: var(--pink-medium);
+            color: var(--white);
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Itinerario */
+        .itinerary-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            opacity: 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+        }
+
+        .itinerary-item.from-left { transform: translateX(-50px); transition: all 0.8s ease-out; }
+        .itinerary-item.from-right { transform: translateX(50px); transition: all 0.8s ease-out; flex-direction: row-reverse; text-align: right; }
+        
+        .itinerary-item.show { opacity: 1; transform: translateX(0); }
+
+        .itinerary-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--pink-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--gold);
+            border: 2px solid var(--gold-light);
+            flex-shrink: 0;
+        }
+
+        .itinerary-text {
+            padding: 0 20px;
+            flex-grow: 1;
+        }
+
+        .itinerary-text h4 { font-family: var(--font-cursive); font-size: 2rem; color: var(--gold); }
+        .itinerary-text p { font-family: var(--font-main); font-weight: 600; }
+
+        /* Galería (Swiper) */
+        .swiper {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+        .swiper-slide {
+            width: 250px;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        /* Modal Galería (Pantalla completa) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .modal.active { display: flex; }
+        .modal img { max-width: 95%; max-height: 80vh; border-radius: 10px; }
+        .close-modal {
+            position: absolute; top: 20px; right: 20px;
+            color: white; font-size: 2rem; cursor: pointer;
+        }
+
+        /* Detalles Finales (Código, Regalos, RSVP) */
+        .info-box {
+            background: rgba(255,255,255,0.6);
+            border: 1px dashed var(--gold);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .info-icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            font-family: var(--font-main);
+            font-size: 1.1rem;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="sparkles-container"></div>
+
+    <div class="container">
+        <header class="hero">
+            <img src="assets/hero.jpg" alt="Chantal XV">
+            <h1>Chantal</h1>
+            <p style="font-family: var(--font-main); letter-spacing: 4px; margin-top: 10px; color: var(--gold);">MIS QUINCE AÑOS</p>
+        </header>
+
+        <section class="section parents-info">
+            <p class="main-message">
+                "Hay momentos en la vida que se atesoran en el corazón para siempre, hoy dejo atrás mi niñez y comienzo una etapa hacia nuevos sueños. Acompáñanos a celebrar este día tan especial.."
+            </p>
+            
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">Con la bendición de Dios y mis Padres:</h2>
+            <p>César Iván Ramirez</p>
+            <p>y Blanca Yazmin Barajas</p>
+            
+            <div class="divider"></div>
+            
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">Mis Padrinos:</h2>
+            <p>José Magdaleno Rocha</p>
+            <p>y Nohelia Irasema Barajas</p>
+        </section>
+
+        <section class="section">
+            <h2 style="font-size: 3rem; margin-bottom: 10px;">Agosto 2026</h2>
+            
+            <div class="calendar-widget">
+                <div style="font-family: var(--font-main); font-weight: bold; font-size: 1.2rem; color: var(--gold); text-align: center; margin-bottom: 10px;">AGOSTO</div>
+                <div class="calendar-grid">
+                    <div class="day-name">D</div><div class="day-name">L</div><div class="day-name">M</div><div class="day-name">M</div><div class="day-name">J</div><div class="day-name">V</div><div class="day-name">S</div>
+                    <div class="day empty"></div><div class="day empty"></div><div class="day empty"></div><div class="day empty"></div><div class="day empty"></div><div class="day empty"></div>
+                    <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div>
+                    <div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div><div class="day">12</div><div class="day">13</div><div class="day">14</div>
+                    <div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div>
+                    <div class="day highlight">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div><div class="day">26</div><div class="day">27</div><div class="day">28</div>
+                    <div class="day">29</div><div class="day">30</div><div class="day">31</div>
+                </div>
+            </div>
+
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+Chantal&dates=20260822T230000Z/20260823T080000Z&details=Acomp%C3%B1anos%20a%20celebrar%20este%20d%C3%ADa%20tan%20especial." target="_blank" class="btn">Save the Date</a>
+        </section>
+
+        <section class="section">
+            <h2 style="font-size: 3rem; margin-bottom: 30px;">Ubicaciones</h2>
+            
+            <div class="location-card">
+                <img src="assets/ceremonia.jpg" alt="Ceremonia">
+                <div class="location-info">
+                    <h2>Ceremonia</h2>
+                    <p><strong>6:00 p.m.</strong><br>5ta avenida 321 Col. Satélite del Norte, Salinas Victoria Nuevo León.</p>
+                    <a href="https://maps.app.goo.gl/hDMHoEA1dyYNUyzs5?g_st=iw" target="_blank" class="btn-map"><i class="fa-solid fa-map-location-dot"></i> Ver Mapa</a>
+                </div>
+            </div>
+
+            <div class="location-card">
+                <img src="assets/recepcion.jpg" alt="Recepción">
+                <div class="location-info">
+                    <h2>Recepción</h2>
+                    <p>Centro Social Salinas Victoria.<br>Calle Francisco I. Madero 220 Centro de Salinas Victoria.</p>
+                    <a href="https://maps.app.goo.gl/vp9gc3FrjbPDbGLF9?g_st=iw" target="_blank" class="btn-map"><i class="fa-solid fa-map-location-dot"></i> Ver Mapa</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 style="font-size: 3.5rem; margin-bottom: 40px;">Itinerario</h2>
+            
+            <div class="itinerary-item from-left observer-el">
+                <div class="itinerary-icon"><i class="fa-solid fa-church"></i></div>
+                <div class="itinerary-text">
+                    <h4>Misa</h4>
+                    <p>6:00 p.m.</p>
+                </div>
+            </div>
+
+            <div class="itinerary-item from-right observer-el">
+                <div class="itinerary-icon"><i class="fa-solid fa-martini-glass-citrus"></i></div>
+                <div class="itinerary-text">
+                    <h4>Recepción</h4>
+                    <p>7:30 p.m.</p>
+                </div>
+            </div>
+
+            <div class="itinerary-item from-left observer-el">
+                <div class="itinerary-icon"><i class="fa-solid fa-people-arrows"></i></div>
+                <div class="itinerary-text">
+                    <h4>Vals</h4>
+                    <p>8:00 p.m.</p>
+                </div>
+            </div>
+
+            <div class="itinerary-item from-right observer-el">
+                <div class="itinerary-icon"><i class="fa-solid fa-music"></i></div>
+                <div class="itinerary-text">
+                    <h4>Baile</h4>
+                    <p>8:30 p.m.</p>
+                </div>
+            </div>
+
+            <div class="itinerary-item from-left observer-el">
+                <div class="itinerary-icon"><i class="fa-solid fa-utensils"></i></div>
+                <div class="itinerary-text">
+                    <h4>Cena</h4>
+                    <p>9:30 p.m.</p>
+                </div>
+            </div>
+
+            <div class="itinerary-item from-right observer-el">
+                <div class="itinerary-icon"><i class="fa-solid fa-moon"></i></div>
+                <div class="itinerary-text">
+                    <h4>Fin del evento</h4>
+                    <p>2:00 a.m.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 style="font-size: 3.5rem; margin-bottom: 20px;">Galería</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="assets/galeria1.jpg" alt="Chantal" onclick="openModal(this.src)"></div>
+                    <div class="swiper-slide"><img src="assets/galeria2.jpg" alt="Chantal" onclick="openModal(this.src)"></div>
+                    <div class="swiper-slide"><img src="assets/galeria3.jpg" alt="Chantal" onclick="openModal(this.src)"></div>
+                    <div class="swiper-slide"><img src="assets/galeria4.jpg" alt="Chantal" onclick="openModal(this.src)"></div>
+                    <div class="swiper-slide"><img src="assets/galeria5.jpg" alt="Chantal" onclick="openModal(this.src)"></div>
+                    <div class="swiper-slide"><img src="assets/galeria6.jpg" alt="Chantal" onclick="openModal(this.src)"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="info-box">
+                <div class="info-icon"><i class="fa-solid fa-user-tie"></i> <i class="fa-solid fa-shoe-prints"></i></div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Código de Vestimenta</h2>
+                <p style="font-family: var(--font-main); font-size: 0.95rem;">El color rosa se reserva para la princesa de la noche.</p>
+            </div>
+
+            <div class="info-box">
+                <div class="info-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Mesa de Regalos</h2>
+                <p style="font-family: var(--font-main); font-size: 0.95rem;">Tu presencia es mi mejor regalo, pero si quieres obsequiarme algo sugerimos la dinámica de lluvia de sobres.</p>
+            </div>
+        </section>
+
+        <section class="section" style="padding-bottom: 60px;">
+            <h2 style="font-size: 3rem; margin-bottom: 20px;">Asistencia</h2>
+            <p style="font-family: var(--font-main);">Por favor, confirma tu asistencia para reservar tu lugar en este día tan especial.</p>
+            
+            <a href="https://wa.me/528119202246?text=Hola!%20Confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Chantal%20%E2%9C%A8" target="_blank" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i> Confirmar por WhatsApp
+            </a>
+        </section>
+    </div>
+
+    <div class="modal" id="imageModal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img id="modalImg" src="">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Inicializar Carrusel Swiper
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 20,
+                stretch: 0,
+                depth: 200,
+                modifier: 1,
+                slideShadows: true,
+            },
+            loop: true,
+        });
+
+        // Animación al hacer Scroll (Itinerario)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.observer-el').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Lightbox Galería
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImg");
+
+        function openModal(src) {
+            modal.classList.add("active");
+            modalImg.src = src;
+            document.body.style.overflow = "hidden"; // Prevenir scroll de fondo
+        }
+
+        function closeModal() {
+            modal.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        // Cerrar modal al hacer clic afuera de la imagen
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
