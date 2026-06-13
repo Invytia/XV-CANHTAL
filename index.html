@@ -13,51 +13,42 @@
 
     <style>
         :root {
-            /* Paleta de Sedas y Dorados */
-            --bg-satin-1: #fdf5f7;
-            --bg-satin-2: #f2d7dd;
-            --mauve-dark: #a95c71;
-            --mauve-light: #d698a7;
-            --text-dark: #3a2e2d;
-            --text-light: #6a5a5a;
+            /* Paleta Intensificada */
+            --bg-satin-1: #fdf0f4;
+            --bg-satin-2: #f2cdd7;
+            --wine-dark: #6e2c3e; /* Nuevo color principal para textos: elegante, legible y colorido */
+            --mauve-medium: #b56c80;
             --white: #ffffff;
             --gold: #d4af37;
             --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #b38728 100%);
             
-            /* Tipografías Integradas */
-            --font-serif: 'Playfair Display', serif; /* Para títulos y citas (Editorial) */
-            --font-sans: 'Montserrat', sans-serif; /* Para lectura clara, horas y ubicaciones */
-            --font-cursive: 'Alex Brush', cursive; /* Para acentos visuales y nombres (Fluida) */
+            /* Tipografías */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --font-cursive: 'Alex Brush', cursive;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-serif);
-            color: var(--text-dark);
+            color: var(--wine-dark);
             background: 
-                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.9) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.7) 0%, transparent 50%),
+                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.8) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
                 radial-gradient(circle at 50% 50%, var(--bg-satin-1) 0%, var(--bg-satin-2) 100%);
             background-attachment: fixed;
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* ================= DESTELLOS Y BRILLOS ================= */
+        /* ================= DESTELLOS ANIMADOS (Solo Dorado Aquí) ================= */
         .sparkle {
-            position: absolute; width: 3px; height: 3px; background: #fff; border-radius: 50%;
-            box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.8), 0 0 15px 5px rgba(212, 175, 55, 0.5);
+            position: absolute; width: 4px; height: 4px; background: #fff; border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.9), 0 0 15px 5px rgba(212, 175, 55, 0.6);
             pointer-events: none; opacity: 0; animation: glimmer 4s infinite linear; z-index: 0;
         }
         @keyframes glimmer { 0% { opacity: 0; transform: scale(0) rotate(0deg); } 50% { opacity: 1; transform: scale(1.5) rotate(180deg); } 100% { opacity: 0; transform: scale(0) rotate(360deg); } }
-
-        .shimmer-text {
-            background: linear-gradient(90deg, var(--mauve-dark) 0%, var(--gold) 50%, var(--mauve-dark) 100%);
-            background-size: 200% auto; color: transparent; -webkit-background-clip: text;
-            background-clip: text; animation: shimmer 4s infinite linear;
-        }
-        @keyframes shimmer { to { background-position: 200% center; } }
 
         /* ================= PANTALLA DEL SOBRE ================= */
         #envelope-screen {
@@ -67,15 +58,15 @@
             transition: opacity 1s ease-out, visibility 1s ease-out;
         }
         .envelope-wrapper { position: relative; width: 340px; height: 230px; cursor: pointer; perspective: 1000px; }
-        .env-back { position: absolute; inset: 0; background: var(--mauve-light); border-radius: 5px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .env-back { position: absolute; inset: 0; background: var(--mauve-medium); border-radius: 5px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
         .env-front {
             position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
-            border-left: 170px solid #f2c2cd; border-right: 170px solid #f2c2cd;
-            border-bottom: 120px solid var(--bg-satin-1); border-top: 110px solid transparent; z-index: 2;
+            border-left: 170px solid #f2b6c6; border-right: 170px solid #f2b6c6;
+            border-bottom: 120px solid var(--bg-satin-2); border-top: 110px solid transparent; z-index: 2;
         }
         .env-flap {
             position: absolute; top: 0; left: 0; width: 100%; height: 130px;
-            background: #f2c2cd; clip-path: polygon(0 0, 100% 0, 50% 100%);
+            background: #f2b6c6; clip-path: polygon(0 0, 100% 0, 50% 100%);
             transform-origin: top; z-index: 4; transition: transform 0.8s ease;
         }
         .env-seal {
@@ -83,99 +74,91 @@
             width: 55px; height: 55px; background: var(--gold-gradient);
             border-radius: 50%; z-index: 5; display: flex; align-items: center; justify-content: center;
             font-family: var(--font-cursive); color: #fff; font-size: 2.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 1px solid #fff; transition: opacity 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); border: 2px solid #fff; transition: opacity 0.3s;
         }
         .open .env-flap { transform: rotateX(180deg); z-index: 1; }
         .open .env-seal { opacity: 0; pointer-events: none; }
         .tap-hint {
             position: absolute; bottom: -50px; width: 100%; text-align: center;
             font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 4px;
-            color: var(--text-dark); text-transform: uppercase; animation: pulse 2s infinite;
+            color: var(--wine-dark); text-transform: uppercase; font-weight: 600; animation: pulse 2s infinite;
         }
         @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
         /* ================= CONTENEDOR PRINCIPAL ================= */
         .container {
             max-width: 480px; margin: 0 auto; position: relative;
-            background: rgba(255,255,255,0.25); backdrop-filter: blur(8px);
-            box-shadow: 0 0 50px rgba(169, 92, 113, 0.15); min-height: 100vh;
-            padding-bottom: 80px; overflow: hidden;
+            background: rgba(255,255,255,0.4); backdrop-filter: blur(15px);
+            box-shadow: 0 0 50px rgba(110, 44, 62, 0.2); min-height: 100vh;
+            overflow: hidden; display: flex; flex-direction: column;
         }
-        .content-layer { position: relative; z-index: 2; }
+        .content-layer { position: relative; z-index: 2; width: 100%; }
 
-        /* Elemento divisor sutil */
         .elegant-divider {
-            width: 50%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 40px auto; opacity: 0.5;
+            width: 40%; height: 1.5px; background: var(--gold-gradient);
+            margin: 40px auto; opacity: 0.8; border-radius: 50%;
         }
 
-        /* ================= HERO (INTOCABLE) ================= */
+        /* ================= HERO ================= */
         .hero { text-align: center; padding: 60px 20px 20px; position: relative; }
         .xv-bg {
-            position: absolute; top: 10px; left: 0; width: 100%;
-            font-size: 16rem; font-family: var(--font-serif); color: rgba(255,255,255,0.9);
-            line-height: 1; z-index: -1; letter-spacing: -10px; text-shadow: 0 10px 30px rgba(169, 92, 113, 0.1);
+            position: absolute; top: 0px; left: 0; width: 100%;
+            font-size: 17rem; font-family: var(--font-serif); color: rgba(255,255,255,0.8);
+            line-height: 1; z-index: -1; letter-spacing: -10px;
         }
-        .hero-title { font-family: var(--font-cursive); font-size: 5.5rem; color: var(--text-dark); margin: 10px 0 0; line-height: 1; text-shadow: 2px 2px 4px rgba(0,0,0,0.05); }
-        .hero-date { font-family: var(--font-sans); font-size: 1rem; letter-spacing: 4px; color: var(--mauve-dark); margin-bottom: 30px; font-weight: 600; }
+        .hero-title { font-family: var(--font-cursive); font-size: 6rem; color: var(--wine-dark); margin: 10px 0 0; line-height: 0.9; text-shadow: 1px 1px 2px rgba(255,255,255,0.8); }
+        .hero-date { font-family: var(--font-sans); font-size: 1.1rem; letter-spacing: 5px; color: var(--mauve-medium); margin-bottom: 30px; font-weight: 600; }
         
-        /* Contador */
-        .countdown { display: flex; justify-content: center; gap: 15px; margin-top: 20px; font-family: var(--font-serif); font-size: 2.2rem; color: var(--text-dark); }
+        .countdown { display: flex; justify-content: center; gap: 15px; margin-top: 20px; font-family: var(--font-serif); font-size: 2.2rem; color: var(--wine-dark); }
         .cd-item { display: flex; flex-direction: column; align-items: center; }
-        .cd-label { font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 2px; color: var(--text-light); text-transform: uppercase; font-weight: 600; }
-        .cd-colon { margin-top: 5px; color: var(--mauve-light); }
+        .cd-label { font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 2px; color: var(--mauve-medium); text-transform: uppercase; font-weight: 600; }
+        .cd-colon { margin-top: 5px; color: var(--mauve-medium); }
 
-        /* Fotos Polaroid Hero */
         .polaroid-container { position: relative; height: 350px; margin: 40px auto; width: 280px; }
-        .polaroid { position: absolute; background: #fff; padding: 10px 10px 40px 10px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border-radius: 4px; }
+        .polaroid { position: absolute; background: #fff; padding: 10px 10px 40px 10px; box-shadow: 0 15px 35px rgba(110, 44, 62, 0.15); border-radius: 4px; }
         .pol-1 { transform: rotate(-5deg); left: -10px; top: 0; z-index: 1; }
         .pol-2 { transform: rotate(8deg); right: -10px; top: 40px; z-index: 2; }
         .polaroid img { width: 200px; height: 250px; object-fit: cover; border: 1px solid #f0f0f0; }
 
-        /* ================= SECCIONES INTEGRADAS ================= */
+        /* ================= SECCIONES FLUIDAS ================= */
         .fluid-section { padding: 40px 30px; text-align: center; }
         
-        /* Ajustes tipográficos para mayor cohesión */
-        .msg-text { font-family: var(--font-serif); font-style: italic; font-size: 1.25rem; color: var(--text-dark); margin-bottom: 40px; padding: 0 10px; line-height: 1.8; }
-        .names-title { font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; color: var(--mauve-light); margin-bottom: 10px; font-weight: 600; }
-        .cursive-name { font-family: var(--font-cursive); font-size: 3.8rem; color: var(--mauve-dark); line-height: 1; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); margin-bottom: 15px; }
+        .msg-text { font-family: var(--font-serif); font-style: italic; font-size: 1.25rem; color: var(--wine-dark); margin-bottom: 40px; line-height: 1.7; opacity: 0.9; }
+        .names-title { font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; color: var(--mauve-medium); margin-bottom: 10px; font-weight: 600; }
+        .cursive-name { font-family: var(--font-cursive); font-size: 4rem; color: var(--wine-dark); line-height: 0.9; margin-bottom: 20px; }
 
-        /* Títulos de sección uniformes y elegantes */
-        .section-title { font-family: var(--font-serif); font-size: 2.6rem; color: var(--text-dark); margin-bottom: 25px; line-height: 1.2; }
-        .section-subtitle { font-family: var(--font-sans); font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-light); margin-bottom: 15px; }
+        .section-title { font-family: var(--font-serif); font-size: 2.8rem; color: var(--wine-dark); margin-bottom: 25px; line-height: 1.2; }
 
-        /* ================= CALENDARIO (Nuevo Widget Integrado) ================= */
+        /* ================= CALENDARIO WIDGET ================= */
         .calendar-grid {
-            display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px;
-            font-family: var(--font-sans); font-size: 0.95rem; max-width: 320px; margin: 0 auto 10px;
+            display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px;
+            font-family: var(--font-sans); font-size: 0.95rem; max-width: 320px; margin: 0 auto 10px; color: var(--wine-dark);
         }
-        .day-name { color: var(--mauve-dark); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
-        .day { padding: 8px 0; color: var(--text-light); display: flex; align-items: center; justify-content: center; }
+        .day-name { color: var(--mauve-medium); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
+        .day { padding: 8px 0; display: flex; align-items: center; justify-content: center; font-weight: 400; }
         .day.highlight {
-            background: var(--gold-gradient); color: #fff; border-radius: 50%;
-            font-weight: bold; transform: scale(1.15); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            background: var(--wine-dark); color: #fff; border-radius: 50%;
+            font-weight: 600; transform: scale(1.15); box-shadow: 0 5px 15px rgba(110, 44, 62, 0.4);
             width: 35px; height: 35px; margin: 0 auto;
         }
 
-        /* Botón Save The Date y Generales */
-        .btn-pill {
-            display: inline-block; padding: 14px 40px; background: var(--mauve-dark);
-            color: #fff; font-family: var(--font-sans); font-size: 0.9rem; letter-spacing: 2px;
-            text-transform: uppercase; text-decoration: none; border-radius: 30px;
-            box-shadow: 0 8px 25px rgba(169, 92, 113, 0.3); transition: transform 0.3s, opacity 0.3s;
-            margin-top: 25px;
+        .btn-gold {
+            display: inline-block; padding: 14px 40px; background: var(--gold-gradient);
+            color: #fff; font-family: var(--font-sans); font-size: 0.9rem; letter-spacing: 3px;
+            text-transform: uppercase; text-decoration: none; border-radius: 30px; font-weight: 600;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); transition: transform 0.3s; margin-top: 25px;
         }
-        .btn-pill:hover { transform: translateY(-3px); opacity: 0.9; }
+        .btn-gold:hover { transform: translateY(-3px); }
 
         /* ================= UBICACIONES ================= */
         .location-block { margin-bottom: 60px; }
-        .loc-img { width: 100%; height: 240px; object-fit: cover; border-radius: 20px; margin-bottom: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .loc-title { font-family: var(--font-cursive); font-size: 3rem; color: var(--gold); margin-bottom: 5px; }
-        .loc-desc { font-family: var(--font-sans); color: var(--text-light); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.8; }
-        
+        .loc-img { width: 100%; height: 240px; object-fit: cover; border-radius: 20px; margin-bottom: 25px; box-shadow: 0 15px 35px rgba(110, 44, 62, 0.2); }
+        .loc-title { font-family: var(--font-cursive); font-size: 3.5rem; color: var(--wine-dark); margin-bottom: 5px; line-height: 1;}
+        .loc-desc { font-family: var(--font-sans); color: var(--wine-dark); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.8; opacity: 0.85; }
+
         /* ================= ITINERARIO ================= */
         .timeline { position: relative; margin: 40px 0; padding: 20px 0; overflow: hidden; }
-        .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: linear-gradient(to bottom, transparent, var(--mauve-light), transparent); transform: translateX(-50%); }
+        .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: linear-gradient(to bottom, transparent, var(--mauve-medium), transparent); transform: translateX(-50%); }
 
         .tl-item { position: relative; width: 50%; margin-bottom: 40px; opacity: 0; display: flex; flex-direction: column; }
         .tl-item.left { left: 0; padding-right: 30px; align-items: flex-end; text-align: right; transform: translateX(-120px); }
@@ -190,37 +173,50 @@
         .tl-item.left::after { right: -9px; }
         .tl-item.right::after { left: -9px; }
 
-        .tl-time { font-family: var(--font-sans); font-size: 1.2rem; font-weight: 600; letter-spacing: 2px; color: var(--mauve-dark); line-height: 1; margin-bottom: 5px; }
-        .tl-desc { font-family: var(--font-serif); font-size: 2rem; color: var(--text-dark); margin-top: -5px; }
+        .tl-time { font-family: var(--font-sans); font-size: 1.2rem; font-weight: 600; letter-spacing: 2px; color: var(--mauve-medium); line-height: 1; margin-bottom: 5px; }
+        .tl-desc { font-family: var(--font-serif); font-size: 2.2rem; color: var(--wine-dark); margin-top: -5px; }
 
         /* ================= GALERÍA ================= */
         .gallery-wrapper { display: flex; overflow-x: auto; gap: 20px; padding: 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
         .gallery-wrapper::-webkit-scrollbar { display: none; }
-        .gal-item { flex: 0 0 85%; scroll-snap-align: center; border-radius: 20px; overflow: hidden; height: 420px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border: 4px solid #fff; }
+        .gal-item { flex: 0 0 85%; scroll-snap-align: center; border-radius: 20px; overflow: hidden; height: 420px; box-shadow: 0 15px 35px rgba(110, 44, 62, 0.2); border: 4px solid #fff; }
         .gal-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* ================= CÓDIGO DE VESTIMENTA Y REGALOS ================= */
+        /* ================= VESTIMENTA Y REGALOS ================= */
         .info-icons-row { display: flex; justify-content: center; align-items: flex-end; gap: 25px; margin-bottom: 25px; }
-        .custom-svg { width: 70px; height: 70px; fill: none; stroke: var(--gold); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); }
-        .info-text { font-family: var(--font-sans); font-size: 1rem; color: var(--text-light); max-width: 90%; margin: 0 auto; line-height: 1.8; }
+        .custom-svg { width: 75px; height: 75px; fill: none; stroke: var(--wine-dark); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+        .info-text { font-family: var(--font-sans); font-size: 1rem; color: var(--wine-dark); max-width: 90%; margin: 0 auto; line-height: 1.8; opacity: 0.9; }
 
-        /* ================= ASISTENCIA ================= */
-        .rsvp-input {
-            width: 90%; padding: 18px; border: 1px solid rgba(169, 92, 113, 0.3); border-radius: 30px;
-            font-family: var(--font-sans); text-align: center; margin-bottom: 25px; outline: none;
-            font-size: 1.05rem; background: rgba(255,255,255,0.7); box-shadow: inset 0 2px 10px rgba(0,0,0,0.03);
-            transition: border-color 0.3s;
+        /* ================= ASISTENCIA (FOOTER ANCLADO FULL-BLEED) ================= */
+        .footer-section {
+            background: var(--wine-dark);
+            color: var(--white);
+            padding: 60px 30px 80px;
+            text-align: center;
+            margin-top: 40px;
+            /* Rompe el flujo para extenderse de lado a lado */
+            width: 100%;
         }
-        .rsvp-input:focus { border-color: var(--mauve-dark); }
+        
+        .footer-section .section-title { color: var(--white); font-family: var(--font-cursive); font-size: 4.5rem; margin-bottom: 15px; }
+        .footer-section .info-text { color: var(--white); opacity: 0.8; margin-bottom: 35px; }
+
+        .rsvp-input {
+            width: 100%; padding: 18px; border: none; border-radius: 30px;
+            font-family: var(--font-sans); text-align: center; margin-bottom: 25px; outline: none;
+            font-size: 1.05rem; background: rgba(255,255,255,0.9); box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: var(--wine-dark);
+        }
+        
         .btn-wa {
-            display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 90%;
-            padding: 18px; background: linear-gradient(135deg, #25D366, #128C7E); color: white; font-family: var(--font-sans);
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+            padding: 18px; background: #25D366; color: white; font-family: var(--font-sans);
             font-size: 1.1rem; font-weight: 600; text-decoration: none; border-radius: 30px;
-            border: none; cursor: pointer; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); transition: transform 0.3s;
+            border: none; cursor: pointer; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); transition: transform 0.3s;
         }
         .btn-wa:hover { transform: translateY(-3px); }
 
-        /* Botón de Audio */
+        /* ================= BOTÓN DE AUDIO ================= */
         .btn-audio {
             position: fixed; bottom: 20px; right: 20px; width: 55px; height: 55px; border-radius: 50%;
             background: var(--gold-gradient); color: #fff; border: none; font-size: 1.4rem;
@@ -247,12 +243,13 @@
     </div>
 
     <div class="container" id="main-container">
+        
         <div class="content-layer">
             
             <section class="hero">
                 <div class="xv-bg">XV</div>
-                <p style="font-family: var(--font-sans); letter-spacing: 4px; font-size: 0.8rem; text-transform: uppercase; color: var(--text-light);">Estás invitado a festejar</p>
-                <h1 class="hero-title shimmer-text">Chantal</h1>
+                <p style="font-family: var(--font-sans); letter-spacing: 4px; font-size: 0.8rem; text-transform: uppercase; color: var(--wine-dark); opacity: 0.7;">Estás invitado a festejar</p>
+                <h1 class="hero-title">Chantal</h1>
                 <p class="hero-date">22 . 08 . 2026</p>
                 
                 <div class="countdown" id="countdown">
@@ -269,7 +266,7 @@
             </section>
 
             <section class="fluid-section">
-                <h2 class="section-subtitle">Llegó nuestro día</h2>
+                <h2 class="section-title">Llegó nuestro día</h2>
                 <p class="msg-text">
                     "Hay momentos en la vida que se atesoran en el corazón para siempre, hoy dejo atrás mi niñez y comienzo una etapa hacia nuevos sueños. Acompáñanos a celebrar este día tan especial."
                 </p>
@@ -283,11 +280,9 @@
                 <p class="cursive-name">y Nohelia Irasema Barajas</p>
             </section>
 
-            <div class="elegant-divider"></div>
-
             <section class="fluid-section">
-                <h2 class="section-title shimmer-text" style="margin-bottom: 5px;">Agosto</h2>
-                <p style="font-family: var(--font-sans); letter-spacing: 4px; color: var(--text-light); margin-bottom: 30px;">2026</p>
+                <h2 class="section-title" style="margin-bottom: 5px;">Agosto</h2>
+                <p style="font-family: var(--font-sans); letter-spacing: 6px; color: var(--mauve-medium); margin-bottom: 30px; font-weight: 600;">2026</p>
                 
                 <div class="calendar-grid">
                     <div class="day-name">D</div><div class="day-name">L</div><div class="day-name">M</div><div class="day-name">M</div><div class="day-name">J</div><div class="day-name">V</div><div class="day-name">S</div>
@@ -299,33 +294,33 @@
                     <div class="day">29</div><div class="day">30</div><div class="day">31</div>
                 </div>
 
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+Chantal&dates=20260822T230000Z/20260823T080000Z" target="_blank" class="btn-pill">Save the Date</a>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+Chantal&dates=20260822T230000Z/20260823T080000Z" target="_blank" class="btn-gold">Save the Date</a>
             </section>
 
             <div class="elegant-divider"></div>
 
             <section class="fluid-section">
                 <div class="location-block">
-                    <h2 class="section-title shimmer-text">Ceremonia</h2>
+                    <h2 class="section-title">Ceremonia</h2>
                     <img src="assets/ceremonia.jpg" class="loc-img" alt="Ceremonia">
                     <h3 class="loc-title">Misa de Acción de Gracias</h3>
                     <p class="loc-desc">5ta avenida 321 Col. Satélite del Norte,<br>Salinas Victoria Nuevo León.<br><strong>6:00 p.m.</strong></p>
-                    <a href="https://maps.app.goo.gl/hDMHoEA1dyYNUyzs5?g_st=iw" target="_blank" class="btn-pill">Ver Ubicación</a>
+                    <a href="https://maps.app.goo.gl/hDMHoEA1dyYNUyzs5?g_st=iw" target="_blank" class="btn-gold">Ver Ubicación</a>
                 </div>
 
                 <div class="location-block" style="margin-bottom: 0;">
-                    <h2 class="section-title shimmer-text">Recepción</h2>
+                    <h2 class="section-title">Recepción</h2>
                     <img src="assets/recepcion.jpg" class="loc-img" alt="Recepción">
                     <h3 class="loc-title">Centro Social</h3>
                     <p class="loc-desc">Calle Francisco I. Madero 220<br>Centro de Salinas Victoria<br><strong>7:30 p.m.</strong></p>
-                    <a href="https://maps.app.goo.gl/vp9gc3FrjbPDbGLF9?g_st=iw" target="_blank" class="btn-pill">Ver Ubicación</a>
+                    <a href="https://maps.app.goo.gl/vp9gc3FrjbPDbGLF9?g_st=iw" target="_blank" class="btn-gold">Ver Ubicación</a>
                 </div>
             </section>
 
             <div class="elegant-divider"></div>
 
             <section class="fluid-section" style="padding-bottom: 0;">
-                <h2 class="section-title shimmer-text">Itinerario</h2>
+                <h2 class="section-title">Itinerario</h2>
                 <div class="timeline">
                     <div class="tl-item left observer-el"><span class="tl-time">18:00</span><span class="tl-desc">Misa</span></div>
                     <div class="tl-item right observer-el"><span class="tl-time">19:30</span><span class="tl-desc">Recepción</span></div>
@@ -339,7 +334,7 @@
             <div class="elegant-divider"></div>
 
             <section class="fluid-section" style="padding-left: 0; padding-right: 0;">
-                <h2 class="section-title shimmer-text">Galería</h2>
+                <h2 class="section-title">Galería</h2>
                 <div class="gallery-wrapper">
                     <div class="gal-item"><img src="assets/galeria2.jpg" alt="Foto"></div>
                     <div class="gal-item"><img src="assets/galeria3.jpg" alt="Foto"></div>
@@ -352,7 +347,7 @@
             <div class="elegant-divider"></div>
 
             <section class="fluid-section">
-                <h2 class="section-title shimmer-text">Vestimenta</h2>
+                <h2 class="section-title">Vestimenta</h2>
                 <div class="info-icons-row">
                     <svg class="custom-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <path d="M25 20 L40 10 L60 10 L75 20 L75 90 L25 90 Z" />
@@ -369,8 +364,8 @@
 
             <div class="elegant-divider"></div>
 
-            <section class="fluid-section">
-                <h2 class="section-title shimmer-text">Mesa de Regalos</h2>
+            <section class="fluid-section" style="padding-bottom: 0;">
+                <h2 class="section-title">Mesa de Regalos</h2>
                 <div class="info-icons-row" style="margin-bottom: 20px;">
                     <svg class="custom-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
@@ -379,11 +374,9 @@
                 <p class="info-text">Tu presencia es lo más importante en esta noche. Pero si deseas tener un detalle con nosotros, sugerimos la dinámica de lluvia de sobres.</p>
             </section>
 
-            <div class="elegant-divider"></div>
-
-            <section class="fluid-section">
-                <h2 class="section-title shimmer-text">Te Esperamos</h2>
-                <p class="info-text" style="margin-bottom: 30px;">Por favor confirma tu asistencia para reservar tu lugar.</p>
+            <section class="footer-section">
+                <h2 class="section-title">Te Esperamos</h2>
+                <p class="info-text">Por favor confirma tu asistencia para reservar tu lugar en este día tan especial.</p>
                 
                 <input type="text" id="nombreInvitado" class="rsvp-input" placeholder="Tu Nombre y Apellido">
                 <button onclick="enviarWA()" class="btn-wa">
@@ -391,14 +384,11 @@
                 </button>
             </section>
 
-        </div>
-    </div>
-
-    <script>
-        // --- DESTELLOS DINÁMICOS ---
+        </div> </div> <script>
+        // --- DESTELLOS DINÁMICOS (SOLO DORADOS Y BLANCOS) ---
         function createSparkles() {
             const container = document.getElementById('main-container');
-            for(let i=0; i<25; i++){
+            for(let i=0; i<30; i++){
                 let sparkle = document.createElement('div');
                 sparkle.classList.add('sparkle');
                 sparkle.style.left = Math.random() * 100 + '%';
