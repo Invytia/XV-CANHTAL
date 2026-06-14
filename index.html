@@ -20,7 +20,7 @@
             --mauve-medium: #b56c80;
             --white: #ffffff;
             
-            /* Nueva Paleta Plata en lugar de Dorada */
+            /* Paleta Plata */
             --silver: #a6a6a6;
             --silver-gradient: linear-gradient(135deg, #d9d9d9 0%, #ffffff 50%, #b3b3b3 100%);
             
@@ -52,13 +52,18 @@
         }
         @keyframes glimmer { 0% { opacity: 0; transform: scale(0) rotate(0deg); } 50% { opacity: 1; transform: scale(1.5) rotate(180deg); } 100% { opacity: 0; transform: scale(0) rotate(360deg); } }
 
-        /* Efecto Shimmer Plata para Textos */
         .shimmer-text {
             background: linear-gradient(90deg, var(--wine-dark) 0%, var(--silver) 50%, var(--wine-dark) 100%);
             background-size: 200% auto; color: transparent; -webkit-background-clip: text;
             background-clip: text; animation: shimmer 4s infinite linear;
         }
         @keyframes shimmer { to { background-position: 200% center; } }
+
+        /* ================= ANIMACIONES DE ENTRADA INTERCALADAS ================= */
+        .scroll-anim { opacity: 0; transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .scroll-anim.anim-left { transform: translateX(-80px); }
+        .scroll-anim.anim-right { transform: translateX(80px); }
+        .scroll-anim.show { opacity: 1; transform: translateX(0); }
 
         /* ================= PANTALLA DEL SOBRE ================= */
         #envelope-screen {
@@ -79,7 +84,6 @@
             background: #f99cb6; clip-path: polygon(0 0, 100% 0, 50% 100%);
             transform-origin: top; z-index: 4; transition: transform 0.8s ease;
         }
-        /* Sello en Plata */
         .env-seal {
             position: absolute; top: 100px; left: 50%; transform: translateX(-50%);
             width: 55px; height: 55px; background: var(--silver-gradient);
@@ -141,8 +145,6 @@
         
         .msg-text { font-family: var(--font-serif); font-style: italic; font-size: 1.35rem; color: var(--wine-dark); margin-bottom: 50px; line-height: 1.8; opacity: 0.9; letter-spacing: 0.5px;}
         .names-title { font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--mauve-medium); margin-bottom: 10px; font-weight: 600; }
-        
-        /* Ajuste: Nombres de papás y padrinos más chicos */
         .cursive-name { font-family: var(--font-cursive); font-size: 3rem; color: var(--wine-dark); line-height: 1; margin-bottom: 30px; }
 
         .section-title { font-family: var(--font-serif); font-size: 3rem; color: var(--wine-dark); margin-bottom: 25px; line-height: 1.2; font-style: italic; }
@@ -160,7 +162,6 @@
             width: 35px; height: 35px; margin: 0 auto;
         }
 
-        /* Botones Plata */
         .btn-silver {
             display: inline-block; padding: 15px 45px; background: var(--silver-gradient);
             color: var(--wine-dark); font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 4px;
@@ -188,7 +189,6 @@
         .tl-item.right { left: 50%; padding-left: 35px; align-items: flex-start; text-align: left; transform: translateX(80px); }
         .tl-item.show { opacity: 1; transform: translateX(0); transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
-        /* Nodos Plata */
         .tl-item::after {
             content: ''; position: absolute; top: 12px; width: 12px; height: 12px;
             background: var(--bg-satin-1); border: 2px solid var(--silver); border-radius: 50%;
@@ -229,7 +229,7 @@
         }
         .btn-wa:hover { transform: translateY(-4px); }
 
-        /* ================= MURO DE DESEOS (FOOTER FULL-BLEED) ================= */
+        /* ================= MURO DE DESEOS ================= */
         .footer-section {
             background: var(--wine-dark);
             color: var(--white);
@@ -317,7 +317,7 @@
                 </div>
             </section>
 
-            <section class="fluid-section">
+            <section class="fluid-section scroll-anim anim-left">
                 <p class="msg-text">
                     "Hay momentos en la vida que se atesoran en el corazón para siempre, hoy dejo atrás mi niñez y comienzo una etapa hacia nuevos sueños. Acompáñanos a celebrar este día tan especial."
                 </p>
@@ -333,7 +333,7 @@
 
             <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
 
-            <section class="fluid-section">
+            <section class="fluid-section scroll-anim anim-right">
                 <h2 class="section-title shimmer-text" style="margin-bottom: 5px;">Agosto</h2>
                 <p style="font-family: var(--font-sans); letter-spacing: 8px; color: var(--mauve-medium); margin-bottom: 40px; font-weight: 500;">2026</p>
                 
@@ -347,20 +347,20 @@
                     <div class="day">29</div><div class="day">30</div><div class="day">31</div>
                 </div>
 
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+Chantal&dates=20260822T230000Z/20260823T080000Z" target="_blank" class="btn-silver">Agregar al calendario</a>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+Chantal&dates=20260822T230000Z/20260823T080000Z" target="_blank" class="btn-silver">Agregar al Calendario</a>
             </section>
 
             <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
 
             <section class="fluid-section">
-                <div class="location-block">
+                <div class="location-block scroll-anim anim-left">
                     <h2 class="section-title shimmer-text">Ceremonia</h2>
                     <img src="assets/ceremonia.jpg" class="loc-img" alt="Ceremonia">
                     <p class="loc-desc">5ta avenida 321 Col. Satélite del Norte,<br>Salinas Victoria Nuevo León.<br><strong>6:00 p.m.</strong></p>
                     <a href="https://maps.app.goo.gl/hDMHoEA1dyYNUyzs5?g_st=iw" target="_blank" class="btn-silver">Ver Ubicación</a>
                 </div>
 
-                <div class="location-block" style="margin-bottom: 0;">
+                <div class="location-block scroll-anim anim-right" style="margin-bottom: 0;">
                     <h2 class="section-title shimmer-text">Recepción</h2>
                     <img src="assets/recepcion.jpg" class="loc-img" alt="Recepción">
                     <p class="loc-desc">Centro Social Salinas Victoria.<br>Calle Francisco I. Madero 220 Centro de Salinas Victoria<br><strong>7:30 p.m.</strong></p>
@@ -371,20 +371,20 @@
             <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
 
             <section class="fluid-section" style="padding-bottom: 0;">
-                <h2 class="section-title shimmer-text">Itinerario</h2>
+                <h2 class="section-title shimmer-text scroll-anim anim-left">Itinerario</h2>
                 <div class="timeline">
-                    <div class="tl-item left observer-el"><span class="tl-time">6:00 p.m.</span><span class="tl-desc">Misa</span></div>
-                    <div class="tl-item right observer-el"><span class="tl-time">7:30 p.m.</span><span class="tl-desc">Recepción</span></div>
-                    <div class="tl-item left observer-el"><span class="tl-time">8:00 p.m.</span><span class="tl-desc">Vals</span></div>
-                    <div class="tl-item right observer-el"><span class="tl-time">8:30 p.m.</span><span class="tl-desc">Baile</span></div>
-                    <div class="tl-item left observer-el"><span class="tl-time">9:30 p.m.</span><span class="tl-desc">Cena</span></div>
-                    <div class="tl-item right observer-el"><span class="tl-time">2:00 a.m.</span><span class="tl-desc">Fin del evento</span></div>
+                    <div class="tl-item left scroll-anim anim-left"><span class="tl-time">6:00 p.m.</span><span class="tl-desc">Misa</span></div>
+                    <div class="tl-item right scroll-anim anim-right"><span class="tl-time">7:30 p.m.</span><span class="tl-desc">Recepción</span></div>
+                    <div class="tl-item left scroll-anim anim-left"><span class="tl-time">8:00 p.m.</span><span class="tl-desc">Vals</span></div>
+                    <div class="tl-item right scroll-anim anim-right"><span class="tl-time">8:30 p.m.</span><span class="tl-desc">Baile</span></div>
+                    <div class="tl-item left scroll-anim anim-left"><span class="tl-time">9:30 p.m.</span><span class="tl-desc">Cena</span></div>
+                    <div class="tl-item right scroll-anim anim-right"><span class="tl-time">2:00 a.m.</span><span class="tl-desc">Fin del evento</span></div>
                 </div>
             </section>
 
             <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
 
-            <section class="fluid-section" style="padding-left: 0; padding-right: 0;">
+            <section class="fluid-section scroll-anim anim-right" style="padding-left: 0; padding-right: 0;">
                 <h2 class="section-title shimmer-text">Galería</h2>
                 <div class="gallery-wrapper">
                     <div class="gal-item"><img src="assets/galeria2.jpg" alt="Foto"></div>
@@ -397,7 +397,7 @@
 
             <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
 
-            <section class="fluid-section">
+            <section class="fluid-section scroll-anim anim-left">
                 <h2 class="section-title shimmer-text">Vestimenta</h2>
                 <div class="info-icons-row">
                     <svg class="custom-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -415,7 +415,7 @@
 
             <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
 
-            <section class="fluid-section" style="padding-bottom: 0;">
+            <section class="fluid-section scroll-anim anim-right" style="padding-bottom: 0;">
                 <h2 class="section-title shimmer-text">Mesa de Regalos</h2>
                 <div class="info-icons-row" style="margin-bottom: 30px;">
                     <svg class="custom-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -427,7 +427,7 @@
 
             <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
 
-            <section class="fluid-section" style="padding-bottom: 0;">
+            <section class="fluid-section scroll-anim anim-left" style="padding-bottom: 0;">
                 <h2 class="section-title shimmer-text">Galería en Vivo</h2>
                 <div class="info-icons-row" style="margin-bottom: 25px;">
                     <i class="fa-solid fa-camera-retro" style="font-size: 3.5rem; color: var(--wine-dark);"></i>
@@ -438,7 +438,7 @@
 
             <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
 
-            <section class="fluid-section">
+            <section class="fluid-section scroll-anim anim-right">
                 <h2 class="section-title shimmer-text">Te Esperamos</h2>
                 <p class="info-text" style="margin-bottom: 30px;">Por favor confirma tu asistencia para reservar tu lugar en este día tan especial.</p>
                 
@@ -448,7 +448,7 @@
                 </button>
             </section>
 
-            <section class="footer-section">
+            <section class="footer-section scroll-anim anim-left">
                 <h2 class="section-title">Muro de Deseos</h2>
                 <p class="info-text">Déjanos un mensaje con tus mejores deseos para atesorarlo por siempre.</p>
                 
@@ -516,13 +516,17 @@
             document.getElementById("secs").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
         }, 1000);
 
-        // --- ANIMACIÓN ITINERARIO ---
+        // --- ANIMACIÓN AL HACER SCROLL (APLICA A TODO EL CUERPO) ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if(entry.isIntersecting) { entry.target.classList.add('show'); }
+                if(entry.isIntersecting) { 
+                    entry.target.classList.add('show'); 
+                }
             });
-        }, { threshold: 0.2 });
-        document.querySelectorAll('.observer-el').forEach(el => observer.observe(el));
+        }, { threshold: 0.15 });
+        
+        // Seleccionamos todos los elementos con la clase scroll-anim
+        document.querySelectorAll('.scroll-anim').forEach(el => observer.observe(el));
 
         // --- WHATSAPP RSVP ---
         function enviarWA() {
