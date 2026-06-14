@@ -7,20 +7,22 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            /* Paleta Intensificada y Elegante */
-            --bg-satin-1: #fdf0f4;
-            --bg-satin-2: #f2cdd7;
+            /* Paleta Intensificada: Más rosa visible, menos "blanco/pastel" */
+            --bg-satin-1: #ffc2d1; 
+            --bg-satin-2: #f48fb1;
             --wine-dark: #6e2c3e; 
             --mauve-medium: #b56c80;
             --white: #ffffff;
-            --gold: #d4af37;
-            --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #b38728 100%);
+            
+            /* Nueva Paleta Plata en lugar de Dorada */
+            --silver: #a6a6a6;
+            --silver-gradient: linear-gradient(135deg, #d9d9d9 0%, #ffffff 50%, #b3b3b3 100%);
             
             /* Tipografías */
             --font-serif: 'Playfair Display', serif;
@@ -34,24 +36,25 @@
             font-family: var(--font-serif);
             color: var(--wine-dark);
             background: 
-                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.8) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
+                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.6) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
                 radial-gradient(circle at 50% 50%, var(--bg-satin-1) 0%, var(--bg-satin-2) 100%);
             background-attachment: fixed;
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* ================= DESTELLOS ================= */
+        /* ================= DESTELLOS PLATA ================= */
         .sparkle {
             position: absolute; width: 3px; height: 3px; background: #fff; border-radius: 50%;
-            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.9), 0 0 15px 5px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.9), 0 0 15px 5px rgba(200, 200, 200, 0.8);
             pointer-events: none; opacity: 0; animation: glimmer 4s infinite linear; z-index: 0;
         }
         @keyframes glimmer { 0% { opacity: 0; transform: scale(0) rotate(0deg); } 50% { opacity: 1; transform: scale(1.5) rotate(180deg); } 100% { opacity: 0; transform: scale(0) rotate(360deg); } }
 
+        /* Efecto Shimmer Plata para Textos */
         .shimmer-text {
-            background: linear-gradient(90deg, var(--wine-dark) 0%, var(--gold) 50%, var(--wine-dark) 100%);
+            background: linear-gradient(90deg, var(--wine-dark) 0%, var(--silver) 50%, var(--wine-dark) 100%);
             background-size: 200% auto; color: transparent; -webkit-background-clip: text;
             background-clip: text; animation: shimmer 4s infinite linear;
         }
@@ -68,19 +71,20 @@
         .env-back { position: absolute; inset: 0; background: var(--mauve-medium); border-radius: 5px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
         .env-front {
             position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
-            border-left: 170px solid #f2b6c6; border-right: 170px solid #f2b6c6;
+            border-left: 170px solid #f99cb6; border-right: 170px solid #f99cb6;
             border-bottom: 120px solid var(--bg-satin-2); border-top: 110px solid transparent; z-index: 2;
         }
         .env-flap {
             position: absolute; top: 0; left: 0; width: 100%; height: 130px;
-            background: #f2b6c6; clip-path: polygon(0 0, 100% 0, 50% 100%);
+            background: #f99cb6; clip-path: polygon(0 0, 100% 0, 50% 100%);
             transform-origin: top; z-index: 4; transition: transform 0.8s ease;
         }
+        /* Sello en Plata */
         .env-seal {
             position: absolute; top: 100px; left: 50%; transform: translateX(-50%);
-            width: 55px; height: 55px; background: var(--gold-gradient);
+            width: 55px; height: 55px; background: var(--silver-gradient);
             border-radius: 50%; z-index: 5; display: flex; align-items: center; justify-content: center;
-            font-family: var(--font-cursive); color: #fff; font-size: 2.2rem;
+            font-family: var(--font-cursive); color: var(--wine-dark); font-size: 2.2rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.4); border: 2px solid #fff; transition: opacity 0.3s;
         }
         .open .env-flap { transform: rotateX(180deg); z-index: 1; }
@@ -95,20 +99,21 @@
         /* ================= CONTENEDOR PRINCIPAL ================= */
         .container {
             max-width: 480px; margin: 0 auto; position: relative;
-            background: rgba(255,255,255,0.4); backdrop-filter: blur(15px);
+            background: rgba(255,255,255,0.3); backdrop-filter: blur(15px);
             box-shadow: 0 0 50px rgba(110, 44, 62, 0.15); min-height: 100vh;
             overflow: hidden; display: flex; flex-direction: column;
         }
         .content-layer { position: relative; z-index: 2; width: 100%; }
 
+        /* Divisor Plata */
         .elegant-divider {
             display: flex; align-items: center; justify-content: center;
             margin: 50px auto; width: 70%; opacity: 0.7;
         }
         .elegant-divider::before, .elegant-divider::after {
-            content: ''; height: 1px; flex-grow: 1; background: var(--gold-gradient);
+            content: ''; height: 1px; flex-grow: 1; background: var(--silver-gradient);
         }
-        .elegant-divider i { color: var(--gold); font-size: 0.5rem; margin: 0 15px; }
+        .elegant-divider i { color: var(--silver); font-size: 0.5rem; margin: 0 15px; }
 
         /* ================= HERO (INTOCABLE) ================= */
         .hero { text-align: center; padding: 60px 20px 20px; position: relative; }
@@ -135,8 +140,10 @@
         .fluid-section { padding: 50px 30px; text-align: center; }
         
         .msg-text { font-family: var(--font-serif); font-style: italic; font-size: 1.35rem; color: var(--wine-dark); margin-bottom: 50px; line-height: 1.8; opacity: 0.9; letter-spacing: 0.5px;}
-        .names-title { font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--mauve-medium); margin-bottom: 15px; font-weight: 600; }
-        .cursive-name { font-family: var(--font-cursive); font-size: 4.5rem; color: var(--wine-dark); line-height: 0.8; margin-bottom: 30px; }
+        .names-title { font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: var(--mauve-medium); margin-bottom: 10px; font-weight: 600; }
+        
+        /* Ajuste: Nombres de papás y padrinos más chicos */
+        .cursive-name { font-family: var(--font-cursive); font-size: 3rem; color: var(--wine-dark); line-height: 1; margin-bottom: 30px; }
 
         .section-title { font-family: var(--font-serif); font-size: 3rem; color: var(--wine-dark); margin-bottom: 25px; line-height: 1.2; font-style: italic; }
 
@@ -153,13 +160,14 @@
             width: 35px; height: 35px; margin: 0 auto;
         }
 
-        .btn-gold {
-            display: inline-block; padding: 15px 45px; background: var(--gold-gradient);
-            color: #fff; font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 4px;
-            text-transform: uppercase; text-decoration: none; border-radius: 40px; font-weight: 600;
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); margin-top: 35px;
+        /* Botones Plata */
+        .btn-silver {
+            display: inline-block; padding: 15px 45px; background: var(--silver-gradient);
+            color: var(--wine-dark); font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 4px;
+            text-transform: uppercase; text-decoration: none; border-radius: 40px; font-weight: 700;
+            box-shadow: 0 10px 25px rgba(166, 166, 166, 0.4); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); margin-top: 35px;
         }
-        .btn-gold:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4); }
+        .btn-silver:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(166, 166, 166, 0.6); }
 
         /* ================= UBICACIONES ================= */
         .location-block { margin-bottom: 70px; }
@@ -180,10 +188,11 @@
         .tl-item.right { left: 50%; padding-left: 35px; align-items: flex-start; text-align: left; transform: translateX(80px); }
         .tl-item.show { opacity: 1; transform: translateX(0); transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
+        /* Nodos Plata */
         .tl-item::after {
             content: ''; position: absolute; top: 12px; width: 12px; height: 12px;
-            background: var(--bg-satin-1); border: 2px solid var(--gold); border-radius: 50%;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            background: var(--bg-satin-1); border: 2px solid var(--silver); border-radius: 50%;
+            box-shadow: 0 0 15px rgba(166, 166, 166, 0.5);
         }
         .tl-item.left::after { right: -7px; }
         .tl-item.right::after { left: -7px; }
@@ -202,22 +211,40 @@
         .custom-svg { width: 80px; height: 80px; fill: none; stroke: var(--wine-dark); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
         .info-text { font-family: var(--font-sans); font-size: 0.95rem; letter-spacing: 1px; color: var(--wine-dark); max-width: 85%; margin: 0 auto; line-height: 2; opacity: 0.85; }
 
-        /* ================= ASISTENCIA (FOOTER FULL-BLEED) ================= */
+        /* ================= ASISTENCIA ================= */
+        .rsvp-input {
+            width: 100%; padding: 18px 0; border: none; border-bottom: 1px solid rgba(110, 44, 62, 0.3);
+            font-family: var(--font-sans); text-align: center; margin-bottom: 30px; outline: none;
+            font-size: 1.1rem; background: transparent; color: var(--wine-dark); border-radius: 0;
+            transition: border-color 0.3s;
+        }
+        .rsvp-input::placeholder { color: rgba(110, 44, 62, 0.5); font-weight: 300; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
+        .rsvp-input:focus { border-bottom: 1px solid var(--wine-dark); }
+        
+        .btn-wa {
+            display: inline-flex; align-items: center; justify-content: center; gap: 15px; width: 100%;
+            padding: 20px; background: #25D366; color: var(--white); font-family: var(--font-sans);
+            font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; text-decoration: none; border-radius: 40px;
+            border: none; cursor: pointer; box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); margin-bottom: 20px;
+        }
+        .btn-wa:hover { transform: translateY(-4px); }
+
+        /* ================= MURO DE DESEOS (FOOTER FULL-BLEED) ================= */
         .footer-section {
             background: var(--wine-dark);
             color: var(--white);
-            padding: 80px 30px 100px;
+            padding: 70px 30px 90px;
             text-align: center;
-            margin-top: 50px;
             width: 100%;
             position: relative;
+            margin-top: 20px;
         }
         
         .footer-section .section-title { 
             color: var(--white); 
             font-family: var(--font-cursive); 
-            font-size: 5rem; 
-            margin-bottom: 10px; 
+            font-size: 4.5rem; 
+            margin-bottom: 15px; 
             line-height: 0.9; 
             font-style: normal; 
         }
@@ -227,37 +254,29 @@
             opacity: 0.9; 
             margin-bottom: 40px; 
             font-family: var(--font-serif); 
-            font-size: 1.2rem; 
+            font-size: 1.1rem; 
             font-style: italic; 
             text-transform: none; 
             letter-spacing: 1px; 
         }
 
-        .rsvp-input {
+        .wish-input {
             width: 100%; padding: 15px 0; border: none; border-bottom: 1px solid rgba(255,255,255,0.4);
-            font-family: var(--font-sans); text-align: center; margin-bottom: 40px; outline: none;
+            font-family: var(--font-sans); text-align: center; margin-bottom: 30px; outline: none;
             font-size: 1.1rem; background: transparent; color: var(--white); border-radius: 0;
             transition: border-color 0.3s;
         }
-        .rsvp-input::placeholder { color: rgba(255,255,255,0.5); font-weight: 300; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
-        .rsvp-input:focus { border-bottom: 1px solid var(--white); }
-        
-        .btn-wa {
-            display: inline-flex; align-items: center; justify-content: center; gap: 15px; width: 100%;
-            padding: 20px; background: #fff; color: var(--wine-dark); font-family: var(--font-sans);
-            font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; text-decoration: none; border-radius: 40px;
-            border: none; cursor: pointer; box-shadow: 0 15px 30px rgba(0,0,0,0.2); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        .btn-wa:hover { transform: translateY(-4px); }
+        .wish-input::placeholder { color: rgba(255,255,255,0.6); font-weight: 300; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
+        .wish-input:focus { border-bottom: 1px solid var(--white); }
 
-        /* ================= BOTÓN DE AUDIO ================= */
+        /* ================= BOTÓN DE AUDIO PLATA ================= */
         .btn-audio {
             position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; border-radius: 50%;
-            background: var(--gold-gradient); color: #fff; border: none; font-size: 1.5rem;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); z-index: 9000; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            background: var(--silver-gradient); color: var(--wine-dark); border: none; font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(166, 166, 166, 0.4); z-index: 9000; cursor: pointer; display: flex; align-items: center; justify-content: center;
         }
         .btn-audio.playing { animation: pulseAudio 2s infinite; }
-        @keyframes pulseAudio { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); } 70% { box-shadow: 0 0 0 20px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+        @keyframes pulseAudio { 0% { box-shadow: 0 0 0 0 rgba(166, 166, 166, 0.7); } 70% { box-shadow: 0 0 0 20px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
 
     </style>
 </head>
@@ -305,7 +324,7 @@
                 
                 <p class="names-title">Con la bendición de Dios y mis Padres</p>
                 <p class="cursive-name">César Iván Ramirez</p>
-                <p class="cursive-name" style="margin-bottom: 50px;">y Blanca Yazmin Barajas</p>
+                <p class="cursive-name" style="margin-bottom: 40px;">y Blanca Yazmin Barajas</p>
                 
                 <p class="names-title">Mis Padrinos</p>
                 <p class="cursive-name">José Magdaleno Rocha</p>
@@ -328,7 +347,7 @@
                     <div class="day">29</div><div class="day">30</div><div class="day">31</div>
                 </div>
 
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+Chantal&dates=20260822T230000Z/20260823T080000Z" target="_blank" class="btn-gold">Save the Date</a>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+Chantal&dates=20260822T230000Z/20260823T080000Z" target="_blank" class="btn-silver">Save the Date</a>
             </section>
 
             <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
@@ -338,14 +357,14 @@
                     <h2 class="section-title shimmer-text">Ceremonia</h2>
                     <img src="assets/ceremonia.jpg" class="loc-img" alt="Ceremonia">
                     <p class="loc-desc">5ta avenida 321 Col. Satélite del Norte,<br>Salinas Victoria Nuevo León.<br><strong>6:00 p.m.</strong></p>
-                    <a href="https://maps.app.goo.gl/hDMHoEA1dyYNUyzs5?g_st=iw" target="_blank" class="btn-gold">Ver Ubicación</a>
+                    <a href="https://maps.app.goo.gl/hDMHoEA1dyYNUyzs5?g_st=iw" target="_blank" class="btn-silver">Ver Ubicación</a>
                 </div>
 
                 <div class="location-block" style="margin-bottom: 0;">
                     <h2 class="section-title shimmer-text">Recepción</h2>
                     <img src="assets/recepcion.jpg" class="loc-img" alt="Recepción">
                     <p class="loc-desc">Centro Social Salinas Victoria.<br>Calle Francisco I. Madero 220 Centro de Salinas Victoria<br><strong>7:30 p.m.</strong></p>
-                    <a href="https://maps.app.goo.gl/vp9gc3FrjbPDbGLF9?g_st=iw" target="_blank" class="btn-gold">Ver Ubicación</a>
+                    <a href="https://maps.app.goo.gl/vp9gc3FrjbPDbGLF9?g_st=iw" target="_blank" class="btn-silver">Ver Ubicación</a>
                 </div>
             </section>
 
@@ -406,13 +425,38 @@
                 <p class="info-text">Tu presencia es mi mejor regalo, pero si quieres obsequiarme algo sugerimos la dinámica de lluvia de sobres.</p>
             </section>
 
-            <section class="footer-section">
-                <h2 class="section-title">Te Esperamos</h2>
-                <p class="info-text">Por favor confirma tu asistencia para reservar tu lugar en este día tan especial.</p>
+            <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
+
+            <section class="fluid-section" style="padding-bottom: 0;">
+                <h2 class="section-title shimmer-text">Galería en Vivo</h2>
+                <div class="info-icons-row" style="margin-bottom: 25px;">
+                    <i class="fa-solid fa-camera-retro" style="font-size: 3.5rem; color: var(--wine-dark);"></i>
+                </div>
+                <p class="info-text" style="margin-bottom: 30px;">Escanea el código QR para compartir tus fotos y videos del evento con nosotros.</p>
+                <img src="assets/qr.jpg" alt="Código QR Galería" style="width: 220px; height: 220px; border-radius: 15px; box-shadow: 0 10px 30px rgba(110, 44, 62, 0.2); border: 5px solid #fff;">
+            </section>
+
+            <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
+
+            <section class="fluid-section">
+                <h2 class="section-title shimmer-text">Te Esperamos</h2>
+                <p class="info-text" style="margin-bottom: 30px;">Por favor confirma tu asistencia para reservar tu lugar en este día tan especial.</p>
                 
                 <input type="text" id="nombreInvitado" class="rsvp-input" placeholder="Tu Nombre y Apellido">
                 <button onclick="enviarWA()" class="btn-wa">
-                    CONFIRMAR ASISTENCIA
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> CONFIRMAR ASISTENCIA
+                </button>
+            </section>
+
+            <section class="footer-section">
+                <h2 class="section-title">Muro de Deseos</h2>
+                <p class="info-text">Déjanos un mensaje con tus mejores deseos para atesorarlo por siempre.</p>
+                
+                <input type="text" id="deseoNombre" class="wish-input" placeholder="Tu Nombre">
+                <textarea id="deseoMensaje" class="wish-input" placeholder="Escribe tu mensaje aquí..." rows="3" style="resize: none;"></textarea>
+                
+                <button onclick="enviarDeseoWA()" class="btn-silver" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> ENVIAR MENSAJE
                 </button>
             </section>
 
@@ -483,8 +527,17 @@
         // --- WHATSAPP RSVP ---
         function enviarWA() {
             const nombre = document.getElementById('nombreInvitado').value.trim();
-            if(!nombre) { alert("Por favor ingresa tu nombre."); return; }
+            if(!nombre) { alert("Por favor ingresa tu nombre para confirmar asistencia."); return; }
             const msg = `Hola! Soy ${nombre} y confirmo mi asistencia a los XV de Chantal ✨`;
+            window.open(`https://wa.me/528119202246?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // --- WHATSAPP MURO DE DESEOS ---
+        function enviarDeseoWA() {
+            const nombre = document.getElementById('deseoNombre').value.trim();
+            const mensaje = document.getElementById('deseoMensaje').value.trim();
+            if(!nombre || !mensaje) { alert("Por favor ingresa tu nombre y mensaje."); return; }
+            const msg = `Hola! Soy ${nombre} y te dejo este mensaje: \n\n"${mensaje}" ✨`;
             window.open(`https://wa.me/528119202246?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
