@@ -163,7 +163,8 @@
         }
 
         .btn-silver {
-            display: inline-block; padding: 15px 45px; background: var(--silver-gradient);
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 15px 40px; background: var(--silver-gradient);
             color: var(--wine-dark); font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 4px;
             text-transform: uppercase; text-decoration: none; border-radius: 40px; font-weight: 700;
             box-shadow: 0 10px 25px rgba(166, 166, 166, 0.4); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); margin-top: 35px;
@@ -180,7 +181,7 @@
         }
         .loc-desc { font-family: var(--font-sans); color: var(--wine-dark); font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 25px; line-height: 2; opacity: 0.85; text-transform: uppercase; }
 
-        /* ================= ITINERARIO (Ajustado para no cortarse) ================= */
+        /* ================= ITINERARIO ================= */
         .timeline { position: relative; margin: 50px 0; padding: 20px 0; overflow: hidden; }
         .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--mauve-medium); transform: translateX(-50%); opacity: 0.5; }
 
@@ -211,7 +212,7 @@
         .custom-svg { width: 80px; height: 80px; fill: none; stroke: var(--wine-dark); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
         .info-text { font-family: var(--font-sans); font-size: 0.95rem; letter-spacing: 1px; color: var(--wine-dark); max-width: 85%; margin: 0 auto; line-height: 2; opacity: 0.85; }
 
-        /* ================= ASISTENCIA ================= */
+        /* ================= ASISTENCIA Y MURO ================= */
         .rsvp-input {
             width: 100%; padding: 18px 0; border: none; border-bottom: 1px solid rgba(110, 44, 62, 0.3);
             font-family: var(--font-sans); text-align: center; margin-bottom: 30px; outline: none;
@@ -229,7 +230,6 @@
         }
         .btn-wa:hover { transform: translateY(-4px); }
 
-        /* ================= MURO DE DESEOS ================= */
         .footer-section {
             background: var(--mauve-medium);
             color: var(--white);
@@ -434,6 +434,27 @@
                 </div>
                 <p class="info-text" style="margin-bottom: 30px;">Escanea el código QR para compartir tus fotos y videos del evento con nosotros.</p>
                 <img src="assets/qr.jpg" alt="Código QR Galería" style="width: 220px; height: 220px; border-radius: 15px; box-shadow: 0 10px 30px rgba(110, 44, 62, 0.2); border: 5px solid #fff;">
+            </section>
+
+            <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
+
+            <section class="fluid-section scroll-anim anim-right" style="padding-bottom: 0;">
+                <h2 class="section-title shimmer-text">Playlist Colaborativa</h2>
+                <div class="info-icons-row" style="margin-bottom: 25px;">
+                    <i class="fa-brands fa-spotify" style="font-size: 3.5rem; color: var(--wine-dark);"></i>
+                </div>
+                <p class="info-text" style="margin-bottom: 30px;">¡Ayúdame a crear el ambiente perfecto! Agrega tus canciones favoritas a nuestra playlist y prepárate para bailar toda la noche.</p>
+                <a href="https://open.spotify.com/playlist/6rYYJyDJZq451dwcgsBKNY?si=2CGmoe8IRDunXWar5nD0qw&pi=r4wA-kEoTW62P&pt=eee6a5f8c568429095b5790302bf7672" target="_blank" class="btn-silver">
+                    <i class="fa-brands fa-spotify" style="font-size: 1.2rem; margin-right: 5px;"></i> Ir a Spotify
+                </a>
+            </section>
+
+            <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
+
+            <section class="fluid-section scroll-anim anim-left" style="padding-bottom: 0;">
+                <p class="msg-text" style="margin-bottom: 0;">
+                    "Mis quince años marcan el inicio de una etapa muy especial en mi vida. Hoy, con el corazón, lleno de alegría y agradecida por el amor de mi familia, quiero compartir este momento con ustedes, porque su compañía hará que este día sea aún más inolvidable y permanezca por siempre en mi corazón."
+                </p>
             </section>
 
             <div class="elegant-divider"><i class="fa-solid fa-diamond"></i></div>
